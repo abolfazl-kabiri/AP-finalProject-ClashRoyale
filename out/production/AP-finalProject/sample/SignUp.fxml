@@ -46,7 +46,7 @@
                   <Insets bottom="40.0" left="15.0" right="15.0" />
                </VBox.margin>
             </PasswordField>
-            <Button fx:id="signUoButton" focusTraversable="false" mnemonicParsing="false" onAction="#signUp" prefHeight="26.0" prefWidth="109.0" text="signUp" textFill="#4b468e">
+            <Button fx:id="signUpButton" focusTraversable="false" mnemonicParsing="false" onAction="#signUp" prefHeight="26.0" prefWidth="109.0" text="signUp" textFill="#4b468e">
                <VBox.margin>
                   <Insets bottom="200.0" />
                </VBox.margin>
