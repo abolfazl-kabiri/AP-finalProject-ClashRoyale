@@ -48,9 +48,14 @@
             </PasswordField>
             <Button fx:id="signUpButton" focusTraversable="false" mnemonicParsing="false" onAction="#signUp" prefHeight="26.0" prefWidth="109.0" text="signUp" textFill="#4b468e">
                <VBox.margin>
-                  <Insets bottom="200.0" />
+                  <Insets bottom="20.0" />
                </VBox.margin>
             </Button>
+            <Label fx:id="wrongPassword" textFill="#2e3c73">
+               <VBox.margin>
+                  <Insets bottom="140.0" />
+               </VBox.margin>
+            </Label>
             <Hyperlink fx:id="loginLink" focusTraversable="false" onAction="#linkToLogin" text="login">
                <font>
                   <Font name="System Bold" size="17.0" />

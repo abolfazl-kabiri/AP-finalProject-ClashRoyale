@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -20,8 +17,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import javax.sound.sampled.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
@@ -36,18 +32,36 @@ public class LoginController implements Initializable {
     @FXML private Hyperlink signUpLink;
     @FXML private Button hidePassWord;
     @FXML private Button showPassWord;
-    private MediaPlayer player;
+    @FXML private Label wrongPassword;
+ //   private MediaPlayer player;
+    private AudioInputStream audioInputStream;
+    private Clip clip;
     private Stage stage;
     private Parent root;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Media media =
-                new Media(Paths.get(new File("LoginMusic.wav").getAbsolutePath()).toUri().toString());
-        player = new MediaPlayer(media);
-        player.setCycleCount(Timeline.INDEFINITE);
-        player.setVolume(0.3);
-        player.play();
+
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(new File("LoginMusic.wav"));
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
+
+
+//        Media media =
+//                new Media(new File("file:LoginMusic.wav").toURI().toString());
+//        player = new MediaPlayer(media);
+//        player.setCycleCount(Timeline.INDEFINITE);
+//        player.setVolume(0.3);
+//        player.play();
         hidePassWord.setVisible(false);
         hidePassWord.setDisable(true);
         visiblePasswordFiled.setVisible(false);
@@ -57,7 +71,8 @@ public class LoginController implements Initializable {
     }
 
     @FXML public void linkToSignUp(ActionEvent event) {
-        player.stop();
+//        player.stop();
+        clip.stop();
         try {
             stage = (Stage) signUpLink.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
@@ -71,7 +86,42 @@ public class LoginController implements Initializable {
     }
 
     @FXML public void login(ActionEvent event) {
-        player.stop();
+
+
+        String username = usernameTextField.getText();
+        if(new File(username+".bin").exists()){
+            String password = passwordField.getText();
+            User user = new User(username,password);
+            try {
+                FileInputStream fileInputStream = new FileInputStream(username+".bin");
+                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+                User savedUser = (User) objectInputStream.readObject();
+                if(user.equals(savedUser)){
+//                            player.stop();
+                    clip.stop();
+                    loadMainMenu(savedUser);
+                } else {
+                    wrongPassword.setText("wrong password");
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            wrongPassword.setText("you have not signed up before");
+        }
+
+
+
+
+        System.out.println("clicked on login");
+    }
+
+    private void loadMainMenu(User user){
         try {
             stage = (Stage) usernameTextField.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
@@ -82,7 +132,6 @@ public class LoginController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("clicked on login");
     }
 
     @FXML public void showPassword(ActionEvent event){
