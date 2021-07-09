@@ -1,25 +1,18 @@
 package sample;
 
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import javax.sound.sampled.*;
 import java.io.*;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -157,27 +150,17 @@ public class LoginController implements Initializable {
         showPassWord.setVisible(true);
         showPassWord.setDisable(false);
     }
-    @FXML public void highlightButton(){
-        loginButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                loginButton.setVisible(false);
-                loginButton.setDisable(true);
-                loginButtonHighlighted.setVisible(true);
-                loginButtonHighlighted.setDisable(false);
-            }
-        });
+    @FXML public void highlightButton(MouseEvent event){
+        loginButton.setVisible(false);
+        loginButton.setDisable(true);
+        loginButtonHighlighted.setVisible(true);
+        loginButtonHighlighted.setDisable(false);
     }
-    @FXML public void unhighlightButton(){
-        loginButtonHighlighted.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                loginButton.setVisible(true);
-                loginButton.setDisable(false);
-                loginButtonHighlighted.setVisible(false);
-                loginButtonHighlighted.setDisable(true);
-            }
-        });
+    @FXML public void unhighlightButton(MouseEvent event){
+        loginButton.setVisible(true);
+        loginButton.setDisable(false);
+        loginButtonHighlighted.setVisible(false);
+        loginButtonHighlighted.setDisable(true);
     }
 
 }

@@ -9,9 +9,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-image: url('file:menu2.jpg');" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="606.0" fitWidth="678.0" layoutX="-3.0" layoutY="-53.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="517.0" fitWidth="922.0" layoutX="-160.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../menu2.jpg" />
+            <Image url="@../main%20menu%20images/photo_2021-07-10_01-58-12.jpg" />
          </image>
       </ImageView>
       <VBox prefHeight="500.0" prefWidth="300.0">
