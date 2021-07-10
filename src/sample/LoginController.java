@@ -36,7 +36,7 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
-            audioInputStream = AudioSystem.getAudioInputStream(new File("LoginMusic.wav"));
+            audioInputStream = AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\LoginMusic.wav"));
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
