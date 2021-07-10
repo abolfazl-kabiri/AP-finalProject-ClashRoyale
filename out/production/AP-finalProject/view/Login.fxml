@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <right>
+      <Pane prefHeight="500.0" prefWidth="355.0" style="-fx-background-color: #121212;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="121.0" layoutY="14.0" text="LOGIN" textFill="#344ca4">
+               <font>
+                  <Font size="37.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernameTextField" layoutX="14.0" layoutY="150.0" prefHeight="26.0" prefWidth="277.0" promptText="username" />
+            <TextField fx:id="visiblePasswordFiled" layoutX="14.0" layoutY="188.0" prefHeight="26.0" prefWidth="277.0" />
+            <PasswordField fx:id="passwordField" layoutX="14.0" layoutY="188.0" prefHeight="26.0" prefWidth="277.0" promptText="password" />
+            <Button fx:id="hidePassWord" layoutX="291.0" layoutY="182.0" mnemonicParsing="false" onAction="#hidePassword" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photos/vdvsdzvd_00000.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="showPassWord" layoutX="291.0" layoutY="182.0" mnemonicParsing="false" onAction="#showPassword" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photos/eye-logo-icon-png-svg_00000.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Hyperlink fx:id="signUpLink" layoutX="143.0" layoutY="470.0" onAction="#linkToSignUp" text="sign up">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Hyperlink>
+            <Button fx:id="loginButtonHighlighted" layoutX="133.0" layoutY="231.0" mnemonicParsing="false" onAction="#login" onMouseExited="#unhighlightButton" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photos/loginPhotos/login%20highlighted.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="loginButton" layoutX="133.0" layoutY="231.0" mnemonicParsing="false" onAction="#login" onMouseEntered="#highlightButton" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photos/loginPhotos/login.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label fx:id="wrongPassword" layoutX="23.0" layoutY="268.0" textFill="#273f76" />
+         </children>
+      </Pane>
+   </right>
+   <left>
+      <ImageView fitHeight="503.0" fitWidth="249.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../photos/loginPhotos/log2.png" />
+         </image>
+      </ImageView>
+   </left>
+</BorderPane>

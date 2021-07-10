@@ -17,11 +17,14 @@ public class User implements Serializable {
         this.password = password;
         level = 1;
         hp = 0;
-        userFile = new File(username + ".bin");
+        userFile = new File(createFilePath());
         if(!userFile.exists())
             saveUser();
     }
 
+    private String createFilePath(){
+        return ".\\src\\users\\" + username + ".bin";
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -45,5 +48,13 @@ public class User implements Serializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public int getLevel() {
+        return level;
     }
 }

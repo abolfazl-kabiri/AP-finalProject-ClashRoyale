@@ -1,11 +1,14 @@
 package cards;
 
+import sample.Speed;
+import sample.Target;
+
 public class MiniPekka extends Soldier{
     public MiniPekka(){
         super(4, 1.8,
-                "fast", "ground",
+                Speed.FAST, Target.GROUND,
                 "melee", false,
                 1, 1,
-                ".\\cardsImage\\mini pekka_00000.png");
+                ".\\photos\\cardsImage\\mini pekka_00000.png");
     }
 }

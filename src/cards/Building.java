@@ -1,11 +1,14 @@
 package cards;
 
-public class Building extends Card{
+
+import sample.Target;
+
+public abstract class Building extends Card{
     protected double hitSpeed;
-    protected String target;
+    protected Target target;
     protected double range;
     protected int lifeTime;
-    public Building(double hitSpeed, String target,
+    public Building(double hitSpeed, Target target,
                     double range, int lifeTime,
                     int cost, int level,
                     String path){

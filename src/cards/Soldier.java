@@ -1,14 +1,17 @@
 package cards;
 
-public class Soldier extends Card{
+import sample.Speed;
+import sample.Target;
+
+public abstract class Soldier extends Card{
     protected double hitSpeed;
-    protected String speed;
-    protected String target;
+    protected Speed speed;
+    protected Target target;
     protected String range;
     protected boolean isAreaSplash;
     protected int count;
     public Soldier(long cost, double hitSpeed,
-                   String speed, String target,
+                   Speed speed, Target target,
                    String range, boolean isAreaSplash,
                    int count, int level, String path) {
         super(cost, path, level);

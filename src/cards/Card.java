@@ -1,6 +1,6 @@
 package cards;
 
-public class Card {
+public abstract class Card {
     protected long cost;
     protected String path;
     protected int level;

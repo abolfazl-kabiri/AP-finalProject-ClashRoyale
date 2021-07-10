@@ -3,6 +3,6 @@ package cards;
 public class Rage extends Spell{
     public Rage(){
         super(5, 3, 1,
-                ".\\cardsImage\\rage_00000.png");
+                ".\\photos\\cardsImage\\rage_00000.png");
     }
 }

@@ -1,11 +1,14 @@
 package cards;
 
+import sample.Speed;
+import sample.Target;
+
 public class BabyDragon extends Soldier{
     public BabyDragon(){
         super(4, 1.8,
-                "fast", "air & ground",
+                Speed.FAST, Target.AIRandGROUND,
                 "3", true,
                 1, 1,
-                ".\\cardsImage\\baby dragon_00000.png");
+                ".\\photos\\cardsImage\\baby dragon_00000.png");
     }
 }

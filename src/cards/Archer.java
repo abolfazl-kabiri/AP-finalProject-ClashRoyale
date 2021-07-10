@@ -1,14 +1,16 @@
 package cards;
 
 import javafx.scene.image.Image;
+import sample.Speed;
+import sample.Target;
 
 import java.io.File;
 
 public class Archer extends Soldier{
     public Archer(){
         super(3, 1.2,
-                "medium", "air & ground",
+                Speed.MEDIUM, Target.AIRandGROUND,
                 "5", true, 1, 1,
-                ".\\cardsImage\\archer_00000.png");
+                ".\\photos\\cardsImage\\archer_00000.png");
     }
 }

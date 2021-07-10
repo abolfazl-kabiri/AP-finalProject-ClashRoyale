@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
+   <children>
+      <Pane layoutX="250.0" prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #121212;">
+         <children>
+            <TextField fx:id="usernameTextField" layoutX="20.0" layoutY="125.0" prefHeight="26.0" prefWidth="277.0" promptText="username" />
+            <TextField fx:id="visiblePassword" layoutX="20.0" layoutY="168.0" prefHeight="26.0" prefWidth="277.0" promptText="username" />
+            <PasswordField fx:id="passwordField" layoutX="20.0" layoutY="168.0" prefHeight="26.0" prefWidth="277.0" promptText="password" />
+            <Button fx:id="hidePasswordButton" layoutX="297.0" layoutY="159.0" mnemonicParsing="false" onAction="#hidePassword" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photos/vdvsdzvd_00000.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="showPasswordButton" layoutX="297.0" layoutY="159.0" mnemonicParsing="false" onAction="#showPassword" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photos/eye-logo-icon-png-svg_00000.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TextField fx:id="visibleRepeatPassword" layoutX="20.0" layoutY="212.0" prefHeight="26.0" prefWidth="277.0" promptText="username" />
+            <PasswordField fx:id="repeatPassField" layoutX="20.0" layoutY="212.0" prefHeight="26.0" prefWidth="277.0" promptText="password" />
+            <Button fx:id="hideRepeatPasswordButton" layoutX="297.0" layoutY="203.0" mnemonicParsing="false" onAction="#hideRepeatPassword" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photos/vdvsdzvd_00000.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="showRepeatPasswordButton" layoutX="297.0" layoutY="203.0" mnemonicParsing="false" onAction="#showRepeatPassword" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photos/eye-logo-icon-png-svg_00000.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Hyperlink fx:id="loginLink" layoutX="149.0" layoutY="466.0" onAction="#linkToLogin" text="login">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Hyperlink>
+            <Label layoutX="133.0" layoutY="14.0" text="SIGNUP" textFill="#40438f">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="signUpHighlightedButton" layoutX="111.0" layoutY="247.0" mnemonicParsing="false" onAction="#signUp" onMouseExited="#unhighlightSignUp" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photos/signInPhotos/sign%20in%20highlighted_00000.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="signUpButton" layoutX="111.0" layoutY="247.0" mnemonicParsing="false" onAction="#signUp" onMouseEntered="#highlightSignUp" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../photos/signInPhotos/sign%20in_00000.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label fx:id="wrongPassword" layoutX="20.0" layoutY="300.0" textFill="RED" />
+         </children>
+      </Pane>
+      <ImageView fitHeight="500.0" fitWidth="250.0" pickOnBounds="true">
+         <image>
+            <Image url="@../photos/signInPhotos/sign.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
