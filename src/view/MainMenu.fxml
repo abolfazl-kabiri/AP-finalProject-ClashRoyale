@@ -19,7 +19,7 @@
          <children>
             <FlowPane hgap="5.0" prefHeight="78.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="profileButton" mnemonicParsing="false" onMouseEntered="#resizeProfPhoto" onMouseExited="#shrinkProfPhoto" onAction="#showProfile" prefHeight="86.0" prefWidth="75.0" style="-fx-background-color: transparent;">
+                  <Button fx:id="profileButton" mnemonicParsing="false" onAction="#showProfile" onMouseEntered="#resizeProfPhoto" onMouseExited="#shrinkProfPhoto" prefHeight="86.0" prefWidth="75.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fx:id="profPhoto" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -40,7 +40,7 @@
             </FlowPane>
             <FlowPane hgap="5.0" prefHeight="67.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="battleDeckButton" mnemonicParsing="false" onMouseEntered="#resizeDeckPhoto" onMouseExited="#shrinkDeckPhoto" style="-fx-background-color: transparent;">
+                  <Button fx:id="battleDeckButton" mnemonicParsing="false" onAction="#showBattleDeck" onMouseEntered="#resizeDeckPhoto" onMouseExited="#shrinkDeckPhoto" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fx:id="deckPhoto" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                            <image>

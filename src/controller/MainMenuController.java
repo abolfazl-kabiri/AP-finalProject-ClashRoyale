@@ -235,6 +235,21 @@ public class MainMenuController {
             e.printStackTrace();
         }
     }
+    @FXML public void showBattleDeck(ActionEvent event){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/BattleDeck.fxml"));
+            stage = (Stage) profileButton.getScene().getWindow();
+            root = loader.load();
+            BattleDeckController deckCon = loader.getController();
+            deckCon.setCurrentUser(currentUser);
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("BattleDeck");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 
