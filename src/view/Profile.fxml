@@ -15,25 +15,44 @@
             <Image url="@../photos/profilePhotos/profile.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="usernameLabel" layoutX="266.0" layoutY="77.0" prefHeight="50.0" prefWidth="214.0" text="bhjmbm" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label fx:id="usernameLabel" layoutX="292.0" layoutY="105.0" prefHeight="50.0" prefWidth="113.0" text="bhjmbm" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="Titan One" size="20.0" />
+            <Font name="Barlow Condensed SemiBold" size="37.0" />
          </font>
       </Label>
-      <ImageView fitHeight="89.0" fitWidth="92.0" layoutX="169.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="89.0" fitWidth="92.0" layoutX="195.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../photos/profilePhotos/levelIcon.png" />
          </image>
       </ImageView>
-      <Label fx:id="levelLabel" alignment="CENTER" layoutX="192.0" layoutY="82.0" prefHeight="38.0" prefWidth="45.0" text="10" textFill="#fffcfc">
+      <Label fx:id="levelLabel" alignment="CENTER" layoutX="218.0" layoutY="110.0" prefHeight="38.0" prefWidth="45.0" text="10" textFill="#fffcfc">
          <font>
-            <Font name="Titan One" size="19.0" />
+            <Font name="Barlow Condensed SemiBold" size="27.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" focusTraversable="false" layoutX="33.0" layoutY="32.0" mnemonicParsing="false" onAction="#backToMenu" text="back">
+      <Button fx:id="backButtonHighlighted" focusTraversable="false" layoutX="27.0" layoutY="432.0" mnemonicParsing="false" onAction="#backToMenu" onMouseExited="#unHighlightedBack" style="-fx-background-color: transparent;">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photos/back%20highlighted_00000.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="backButton" focusTraversable="false" layoutX="27.0" layoutY="432.0" mnemonicParsing="false" onAction="#backToMenu" onMouseEntered="#highlightBack" style="-fx-background-color: transparent;">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photos/back_00000.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
    </children>
 </AnchorPane>

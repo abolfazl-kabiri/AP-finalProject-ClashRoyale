@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import sample.User;
 
@@ -19,13 +20,22 @@ public class ProfileController {
     private Stage stage;
     private Parent root;
     @FXML private Label usernameLabel;
-
     @FXML private Label levelLabel;
-
     @FXML private Button backButton;
-
-    @FXML
-    void backToMenu(ActionEvent event) {
+    @FXML private Button backButtonHighlighted;
+    @FXML public void highlightBack(MouseEvent event){
+        backButton.setVisible(false);
+        backButton.setDisable(true);
+        backButtonHighlighted.setVisible(true);
+        backButtonHighlighted.setDisable(false);
+    }
+    @FXML public void unHighlightedBack(MouseEvent event){
+        backButton.setVisible(true);
+        backButton.setDisable(false);
+        backButtonHighlighted.setVisible(false);
+        backButtonHighlighted.setDisable(true);
+    }
+    @FXML void backToMenu(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/MainMenu.fxml"));
             stage = (Stage) backButton.getScene().getWindow();
