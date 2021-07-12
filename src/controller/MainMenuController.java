@@ -250,6 +250,21 @@ public class MainMenuController {
             e.printStackTrace();
         }
     }
+    @FXML public void showBattleHistory(ActionEvent event){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/BattleHistory.fxml"));
+            stage = (Stage) battleHistoryButton.getScene().getWindow();
+            root = loader.load();
+            BattleHistoryController battleCon = loader.getController();
+            battleCon.setCurrentUser(currentUser);
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("battle history");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 

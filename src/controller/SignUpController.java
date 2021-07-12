@@ -41,28 +41,28 @@ public class SignUpController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       try {
-           audioInputStream = AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\LoginMusic.wav"));
-           clip = AudioSystem.getClip();
-           clip.open(audioInputStream);
-           clip.start();
-       } catch (LineUnavailableException e) {
-           e.printStackTrace();
-       } catch (IOException e) {
-           e.printStackTrace();
-       } catch (UnsupportedAudioFileException e) {
-           e.printStackTrace();
-       }
-       visiblePassword.setVisible(false);
-       visiblePassword.setDisable(true);
-       hidePasswordButton.setDisable(true);
-       hidePasswordButton.setVisible(false);
-       visibleRepeatPassword.setDisable(true);
-       visibleRepeatPassword.setVisible(false);
-       hideRepeatPasswordButton.setVisible(false);
-       hideRepeatPasswordButton.setDisable(true);
-       signUpHighlightedButton.setVisible(false);
-       signUpHighlightedButton.setDisable(true);
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\LoginMusic.wav"));
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
+        visiblePassword.setVisible(false);
+        visiblePassword.setDisable(true);
+        hidePasswordButton.setDisable(true);
+        hidePasswordButton.setVisible(false);
+        visibleRepeatPassword.setDisable(true);
+        visibleRepeatPassword.setVisible(false);
+        hideRepeatPasswordButton.setVisible(false);
+        hideRepeatPasswordButton.setDisable(true);
+        signUpHighlightedButton.setVisible(false);
+        signUpHighlightedButton.setDisable(true);
 //        Media media =
 //                new Media(Paths.get(new File("LoginMusic.wav").getAbsolutePath()).toUri().toString());
 //        player = new MediaPlayer(media);
@@ -87,7 +87,6 @@ public class SignUpController implements Initializable {
     }
     @FXML public void signUp(ActionEvent event) {
         String username = usernameTextField.getText();
-        System.out.println(username);
         File file = new File(".\\src\\users\\" + username + ".bin");
         if(file.exists()){
             wrongPassword.setText("this username is already taken");

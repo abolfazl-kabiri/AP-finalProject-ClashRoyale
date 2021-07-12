@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: darkorange;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BattleHistoryController">
+    <children>
+        <ImageView fitHeight="520.0" fitWidth="615.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../photos/battleHistory/listViewImage.jpg" />
+            </image>
+        </ImageView>
+        <Label layoutX="239.0" layoutY="11.0" text="battle history">
+            <font>
+                <Font size="21.0" />
+            </font>
+        </Label>
+        <ListView fx:id="listView" fixedCellSize="60.0" layoutY="61.0" prefHeight="420.0" prefWidth="602.0" stylesheets="@listView.css" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="61.0" />
+        <Button fx:id="backButtonHighlighted" focusTraversable="false" layoutX="30.0" layoutY="468.0" mnemonicParsing="false" onAction="#backToMenu" onMouseExited="#unHighlightedBack" prefHeight="26.0" prefWidth="65.0" style="-fx-background-color: transparent;">
+            <cursor>
+                <Cursor fx:constant="DEFAULT" />
+            </cursor>
+            <graphic>
+                <ImageView fitHeight="35.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/back%20highlighted_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="backButton" focusTraversable="false" layoutX="30.0" layoutY="468.0" mnemonicParsing="false" onAction="#backToMenu" onMouseEntered="#highlightBack" prefHeight="26.0" prefWidth="73.0" style="-fx-background-color: transparent;">
+            <cursor>
+                <Cursor fx:constant="DEFAULT" />
+            </cursor>
+            <graphic>
+                <ImageView fitHeight="35.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/back_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+    </children>
+</AnchorPane>

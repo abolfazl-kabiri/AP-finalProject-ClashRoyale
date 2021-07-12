@@ -1,6 +1,8 @@
 package cards;
 
-public abstract class Card {
+import java.io.Serializable;
+
+public abstract class Card implements Serializable {
     protected long cost;
     protected String path;
     protected int level;

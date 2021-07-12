@@ -7,274 +7,274 @@
 
 
 <AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BattleDeckController">
-   <children>
-      <ImageView fitHeight="500.0" fitWidth="600.0" pickOnBounds="true">
-         <image>
-            <Image url="@../photos/batlle%20deck%20photos/Wood-Boards-Texture.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="68.0" fitWidth="600.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/batlle%20deck%20photos/collection%20bar_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="archerPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="55.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/cardsImage/archer_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="dragonPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="128.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/cardsImage/baby%20dragon_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="barbarianPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="200.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/cardsImage/barbarian_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="giantPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="272.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/cardsImage/giant_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="pekkaPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="344.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/cardsImage/mini%20pekka_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="valkyriePhoto" fitHeight="70.0" fitWidth="70.0" layoutX="416.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/cardsImage/valkyrie_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="wizardPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="488.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/cardsImage/wizard_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="arrowsPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="128.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/cardsImage/arrows_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="fireBallPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="201.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/cardsImage/fireball_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="ragePhoto" fitHeight="70.0" fitWidth="70.0" layoutX="272.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/cardsImage/rage_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="cannonPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="344.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/cardsImage/canon_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="infernoPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="416.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/cardsImage/inferno_00000.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="emptyCard1" layoutX="12.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard1" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fx:id="emptyCard1Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="emptyCard2" layoutX="84.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard2" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fx:id="emptyCard2Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="emptyCard3" layoutX="156.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard3" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fx:id="emptyCard3Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="emptyCard4" layoutX="228.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard4" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fx:id="emptyCard4Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="emptyCard5" layoutX="300.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard5" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fx:id="emptyCard5Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="emptyCard6" layoutX="372.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard6" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fx:id="emptyCard6Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="emptyCard7" layoutX="444.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard7" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fx:id="emptyCard7Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="emptyCard8" layoutX="516.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard8" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fx:id="emptyCard8Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="archerCard" layoutX="48.0" layoutY="265.0" mnemonicParsing="false" onAction="#selectArcher" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/cardsImage/archer_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="dragonCard" layoutX="120.0" layoutY="265.0" mnemonicParsing="false" onAction="#selectDragon" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/cardsImage/baby%20dragon_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="barbarianCard" layoutX="192.0" layoutY="265.0" mnemonicParsing="false" onAction="#selectBarbarian" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/cardsImage/barbarian_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="giantCard" layoutX="264.0" layoutY="265.0" mnemonicParsing="false" onAction="#selectGiant" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/cardsImage/giant_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="pekkaCard" layoutX="336.0" layoutY="265.0" mnemonicParsing="false" onAction="#selectPekka" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/cardsImage/mini%20pekka_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="valkyrieCard" layoutX="408.0" layoutY="265.0" mnemonicParsing="false" onAction="#selectValkyrie" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/cardsImage/valkyrie_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="wizardCard" layoutX="480.0" layoutY="265.0" mnemonicParsing="false" onAction="#selectWizard" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/cardsImage/wizard_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="arrowsCard" layoutX="120.0" layoutY="343.0" mnemonicParsing="false" onAction="#selectArrows" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/cardsImage/arrows_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="fireBallCard" layoutX="192.0" layoutY="343.0" mnemonicParsing="false" onAction="#selectFireBall" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/cardsImage/fireball_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="rageCard" layoutX="264.0" layoutY="343.0" mnemonicParsing="false" onAction="#selectRage" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/cardsImage/rage_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="cannonCard" layoutX="336.0" layoutY="343.0" mnemonicParsing="false" onAction="#selectCannon" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/cardsImage/canon_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="infernoCard" layoutX="408.0" layoutY="343.0" mnemonicParsing="false" onAction="#selectInferno" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/cardsImage/inferno_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="backButtonHighlighted" layoutX="12.0" layoutY="442.0" mnemonicParsing="false" onAction="#backToMenu" onMouseExited="#unHighlightedBack" prefHeight="40.0" prefWidth="87.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="36.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/back%20highlighted_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="backButton" layoutX="12.0" layoutY="442.0" mnemonicParsing="false" onAction="#backToMenu" onMouseEntered="#highlightBack" prefHeight="40.0" prefWidth="77.0" style="-fx-background-color: transparent;">
-         <graphic>
-            <ImageView fitHeight="36.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/back_00000.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-   </children>
+    <children>
+        <ImageView fitHeight="500.0" fitWidth="600.0" pickOnBounds="true">
+            <image>
+                <Image url="@../photos/batlle%20deck%20photos/Wood-Boards-Texture.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="68.0" fitWidth="600.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../photos/batlle%20deck%20photos/collection%20bar_00000.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="archerPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="55.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../photos/cardsImage/archer_00000.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="dragonPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="128.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../photos/cardsImage/baby%20dragon_00000.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="barbarianPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="200.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../photos/cardsImage/barbarian_00000.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="giantPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="272.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../photos/cardsImage/giant_00000.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="pekkaPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="344.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../photos/cardsImage/mini%20pekka_00000.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="valkyriePhoto" fitHeight="70.0" fitWidth="70.0" layoutX="416.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../photos/cardsImage/valkyrie_00000.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="wizardPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="488.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../photos/cardsImage/wizard_00000.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="arrowsPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="128.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../photos/cardsImage/arrows_00000.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="fireBallPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="201.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../photos/cardsImage/fireball_00000.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="ragePhoto" fitHeight="70.0" fitWidth="70.0" layoutX="272.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../photos/cardsImage/rage_00000.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="cannonPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="344.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../photos/cardsImage/canon_00000.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="infernoPhoto" fitHeight="70.0" fitWidth="70.0" layoutX="416.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../photos/cardsImage/inferno_00000.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="emptyCard1" layoutX="12.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard1" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fx:id="emptyCard1Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="emptyCard2" layoutX="84.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard2" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fx:id="emptyCard2Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="emptyCard3" layoutX="156.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard3" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fx:id="emptyCard3Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="emptyCard4" layoutX="228.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard4" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fx:id="emptyCard4Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="emptyCard5" layoutX="300.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard5" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fx:id="emptyCard5Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="emptyCard6" layoutX="372.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard6" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fx:id="emptyCard6Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="emptyCard7" layoutX="444.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard7" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fx:id="emptyCard7Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="emptyCard8" layoutX="516.0" layoutY="52.0" mnemonicParsing="false" onAction="#unselectCard8" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fx:id="emptyCard8Photo" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="archerCard" layoutX="48.0" layoutY="265.0" mnemonicParsing="false" onAction="#selectArcher" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/cardsImage/archer_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="dragonCard" layoutX="120.0" layoutY="265.0" mnemonicParsing="false" onAction="#selectDragon" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/cardsImage/baby%20dragon_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="barbarianCard" layoutX="192.0" layoutY="265.0" mnemonicParsing="false" onAction="#selectBarbarian" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/cardsImage/barbarian_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="giantCard" layoutX="264.0" layoutY="265.0" mnemonicParsing="false" onAction="#selectGiant" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/cardsImage/giant_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="pekkaCard" layoutX="336.0" layoutY="265.0" mnemonicParsing="false" onAction="#selectPekka" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/cardsImage/mini%20pekka_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="valkyrieCard" layoutX="408.0" layoutY="265.0" mnemonicParsing="false" onAction="#selectValkyrie" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/cardsImage/valkyrie_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="wizardCard" layoutX="480.0" layoutY="265.0" mnemonicParsing="false" onAction="#selectWizard" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/cardsImage/wizard_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="arrowsCard" layoutX="120.0" layoutY="343.0" mnemonicParsing="false" onAction="#selectArrows" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/cardsImage/arrows_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="fireBallCard" layoutX="192.0" layoutY="343.0" mnemonicParsing="false" onAction="#selectFireBall" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/cardsImage/fireball_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="rageCard" layoutX="264.0" layoutY="343.0" mnemonicParsing="false" onAction="#selectRage" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/cardsImage/rage_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="cannonCard" layoutX="336.0" layoutY="343.0" mnemonicParsing="false" onAction="#selectCannon" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/cardsImage/canon_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="infernoCard" layoutX="408.0" layoutY="343.0" mnemonicParsing="false" onAction="#selectInferno" prefHeight="70.0" prefWidth="58.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/cardsImage/inferno_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="backButtonHighlighted" layoutX="12.0" layoutY="442.0" mnemonicParsing="false" onAction="#backToMenu" onMouseExited="#unHighlightedBack" prefHeight="40.0" prefWidth="87.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="36.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/back%20highlighted_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="backButton" layoutX="12.0" layoutY="442.0" mnemonicParsing="false" onAction="#backToMenu" onMouseEntered="#highlightBack" prefHeight="40.0" prefWidth="77.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="36.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/back_00000.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+    </children>
 </AnchorPane>

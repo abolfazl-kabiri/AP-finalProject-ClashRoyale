@@ -1,0 +1,13 @@
+.list-cell{
+    -fx-background-color: transparent;
+    -fx-alignment: CENTER;
+    -fx-font-family: "Titan One";
+    -fx-text-fill: #20206e;
+    -fx-font-size: 18.0;
+}
+
+.list-view{
+    -fx-background-color: transparent;
+
+}
+

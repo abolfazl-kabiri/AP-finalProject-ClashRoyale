@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-image: url('file:menu2.jpg');" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainMenuController">
    <children>
       <ImageView fitHeight="517.0" fitWidth="922.0" layoutX="-160.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -62,7 +62,7 @@
             </FlowPane>
             <FlowPane hgap="5.0" prefHeight="62.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="battleHistoryButton" mnemonicParsing="false" onMouseEntered="#resizeHistoryPhoto" onMouseExited="#shrinkHistoryPhoto" style="-fx-background-color: transparent;">
+                  <Button fx:id="battleHistoryButton" mnemonicParsing="false" onAction="#showBattleHistory" onMouseEntered="#resizeHistoryPhoto" onMouseExited="#shrinkHistoryPhoto" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fx:id="historyPhoto" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                            <image>

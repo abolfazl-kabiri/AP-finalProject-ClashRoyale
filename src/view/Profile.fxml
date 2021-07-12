@@ -15,7 +15,7 @@
             <Image url="@../photos/profilePhotos/profile.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="usernameLabel" layoutX="292.0" layoutY="105.0" prefHeight="50.0" prefWidth="113.0" text="bhjmbm" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Label fx:id="usernameLabel" layoutX="292.0" layoutY="105.0" prefHeight="50.0" prefWidth="113.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="Barlow Condensed SemiBold" size="37.0" />
          </font>

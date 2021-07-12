@@ -23,6 +23,7 @@ public class BattleDeckController {
     private Timer timer;
     private TimerTask timerTask;
     private User currentUser;
+    private ArrayList<Card> userCards;
     private ArrayList<Button> emptyCards;
     private ArrayList<Card> selectedCards;
     private HashMap<Button, Card> selectedCardsObjects;
@@ -75,7 +76,7 @@ public class BattleDeckController {
     public void initialize(){
         timer = new Timer();
         emptyCards = new ArrayList<>();
-        selectedCards = new ArrayList<>();
+//        selectedCards = new ArrayList<>();
         selectedCardsImages = new HashMap<>();
         selectedCardsObjects = new HashMap<>();
         emptyCardsImages = new HashMap<>();
@@ -223,7 +224,7 @@ public class BattleDeckController {
     @FXML public void unselectCard1(ActionEvent event){
         String id = selectedCardsImages.get(emptyCard1).getId();
         /*if (id.contains("archer")){
-            *//*TranslateTransition tt = new TranslateTransition();
+         *//*TranslateTransition tt = new TranslateTransition();
             tt.setNode(archerPhoto);
             tt.setToX(archerPhoto.getLayoutX() - archerCard.getLayoutX() - 6);
             tt.setToY(archerPhoto.getLayoutY() - archerCard.getLayoutY() - 4);
@@ -415,6 +416,8 @@ public class BattleDeckController {
     @FXML public void backToMenu(ActionEvent event) {
         timer.cancel();
         try {
+            currentUser.setDeck(selectedCards);
+            currentUser.saveUser();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/MainMenu.fxml"));
             stage = (Stage) backButton.getScene().getWindow();
             root = loader.load();
@@ -640,5 +643,8 @@ public class BattleDeckController {
     }
     public void setCurrentUser(User user) {
         this.currentUser = user;
+        userCards = user.getDeck();
+        selectedCards = userCards;
+        System.out.println(userCards);
     }
 }

@@ -1,6 +1,9 @@
 package sample;
 
+import cards.Card;
+
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class User implements Serializable {
@@ -10,6 +13,8 @@ public class User implements Serializable {
     private int level;
     private int hp;
     private File userFile;
+    private ArrayList<String> battleHistory;
+    private ArrayList<Card> deck;
 
 
     public User(String username, String password) {
@@ -17,9 +22,15 @@ public class User implements Serializable {
         this.password = password;
         level = 1;
         hp = 0;
+        battleHistory = new ArrayList<>();
+//        battleHistory.add("hello this is test");
+//        battleHistory.add("test 2");
+//        battleHistory.add("test3");
+        deck = new ArrayList<>();
         userFile = new File(createFilePath());
         if(!userFile.exists())
             saveUser();
+
     }
 
     private String createFilePath(){
@@ -38,7 +49,7 @@ public class User implements Serializable {
         return Objects.hash(username, password, level, hp);
     }
 
-    private void saveUser(){
+    public void saveUser(){
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(userFile);
             ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream);
@@ -56,5 +67,17 @@ public class User implements Serializable {
 
     public int getLevel() {
         return level;
+    }
+
+    public ArrayList<String> getBattleHistory() {
+        return battleHistory;
+    }
+
+    public ArrayList<Card> getDeck() {
+        return deck;
+    }
+
+    public void setDeck(ArrayList<Card> deck) {
+        this.deck = deck;
     }
 }

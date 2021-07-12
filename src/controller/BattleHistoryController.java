@@ -3,26 +3,31 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import sample.User;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class ProfileController {
-
+public class BattleHistoryController implements Initializable {
     private User currentUser;
-
+    private ArrayList<String> battles;
     private Stage stage;
     private Parent root;
-    @FXML private Label usernameLabel;
-    @FXML private Label levelLabel;
     @FXML private Button backButton;
+    @FXML private ListView<String> listView;
     @FXML private Button backButtonHighlighted;
+
     @FXML public void highlightBack(MouseEvent event){
         backButton.setVisible(false);
         backButton.setDisable(true);
@@ -50,15 +55,16 @@ public class ProfileController {
             e.printStackTrace();
         }
     }
-
-
     public void setCurrentUser(User user) {
         this.currentUser = user;
-        changeLabelText();
-    }
+        battles = currentUser.getBattleHistory();
+        listView.getItems().addAll(battles);
 
-    private void changeLabelText(){
-        usernameLabel.setText(currentUser.getUsername());
-        levelLabel.setText(String.valueOf(currentUser.getLevel()));
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        listView.setMouseTransparent(true);
+        listView.setFocusTraversable(false);
+
     }
 }
