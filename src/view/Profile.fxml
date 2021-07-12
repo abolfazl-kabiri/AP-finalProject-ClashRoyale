@@ -6,6 +6,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
@@ -54,5 +55,54 @@
             </ImageView>
          </graphic>
       </Button>
+      <Label layoutX="27.0" layoutY="277.0" text="your selected cards:" textFill="WHITE">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="24.0" />
+         </font>
+      </Label>
+      <HBox layoutX="53.0" layoutY="320.0" prefHeight="68.0" prefWidth="494.0">
+         <children>
+            <ImageView fx:id="selectedCard1" fitHeight="100.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="selectedCard2" fitHeight="100.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="selectedCard3" fitHeight="100.0" fitWidth="61.0" layoutX="72.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="selectedCard4" fitHeight="100.0" fitWidth="61.0" layoutX="133.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="selectedCard5" fitHeight="100.0" fitWidth="61.0" layoutX="195.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="selectedCard6" fitHeight="100.0" fitWidth="61.0" layoutX="256.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="selectedCard7" fitHeight="100.0" fitWidth="61.0" layoutX="318.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="selectedCard8" fitHeight="100.0" fitWidth="61.0" layoutX="380.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

@@ -20,8 +20,6 @@ import java.util.*;
 
 public class BattleDeckController {
     private String emptyCardImage = ".\\photos\\batlle deck photos\\empty card_00000.png";
-    private Timer timer;
-    private TimerTask timerTask;
     private User currentUser;
     private ArrayList<Card> userCards;
     private ArrayList<Button> emptyCards;
@@ -74,9 +72,7 @@ public class BattleDeckController {
     @FXML private ImageView cannonPhoto;
     @FXML private ImageView infernoPhoto;
     public void initialize(){
-        timer = new Timer();
         emptyCards = new ArrayList<>();
-//        selectedCards = new ArrayList<>();
         selectedCardsImages = new HashMap<>();
         selectedCardsObjects = new HashMap<>();
         emptyCardsImages = new HashMap<>();
@@ -102,7 +98,7 @@ public class BattleDeckController {
         }
     }
     @FXML public void selectArcher(ActionEvent event){
-        timer.cancel();
+
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
             Card card = new Archer();
@@ -110,7 +106,7 @@ public class BattleDeckController {
         }
     }
     @FXML public void selectDragon(ActionEvent event){
-        timer.cancel();
+
         Button temp = findFirstDisableEmptyCard();
         if(temp != null){
             Card card = new BabyDragon();
@@ -118,7 +114,7 @@ public class BattleDeckController {
         }
     }
     @FXML public void selectBarbarian(ActionEvent event){
-        timer.cancel();
+
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
             Card card = new Barbarian();
@@ -126,7 +122,7 @@ public class BattleDeckController {
         }
     }
     @FXML public void selectGiant(ActionEvent event){
-        timer.cancel();
+
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
             Card card = new Giant();
@@ -134,7 +130,7 @@ public class BattleDeckController {
         }
     }
     @FXML public void selectPekka(ActionEvent event){
-        timer.cancel();
+
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
             Card card = new MiniPekka();
@@ -142,7 +138,7 @@ public class BattleDeckController {
         }
     }
     @FXML public void selectValkyrie(ActionEvent event){
-        timer.cancel();
+
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
             Card card = new Valkyrie();
@@ -150,7 +146,7 @@ public class BattleDeckController {
         }
     }
     @FXML public void selectWizard(ActionEvent event){
-        timer.cancel();
+
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
             Card card = new Wizard();
@@ -158,7 +154,7 @@ public class BattleDeckController {
         }
     }
     @FXML public void selectArrows(ActionEvent event){
-        timer.cancel();
+
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
             Card card = new Arrows();
@@ -166,7 +162,7 @@ public class BattleDeckController {
         }
     }
     @FXML public void selectFireBall(ActionEvent event){
-        timer.cancel();
+
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
             Card card = new FireBall();
@@ -174,7 +170,7 @@ public class BattleDeckController {
         }
     }
     @FXML public void selectRage(ActionEvent event){
-        timer.cancel();
+
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
             Card card = new Rage();
@@ -182,7 +178,7 @@ public class BattleDeckController {
         }
     }
     @FXML public void selectCannon(ActionEvent event){
-        timer.cancel();
+
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
             Card card = new Cannon();
@@ -190,7 +186,7 @@ public class BattleDeckController {
         }
     }
     @FXML public void selectInferno(ActionEvent event){
-        timer.cancel();
+
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
             Card card = new InfernoTower();
@@ -202,187 +198,15 @@ public class BattleDeckController {
         selectedCardsImages.put(intendedEmptyCard, imageView);
         selectedCards.add(card);
         selectedCardsObjects.put(intendedEmptyCard, card);
-        TranslateTransition tt = new TranslateTransition();
-        tt.setNode(imageView);
-        tt.setToX(-1 * (imageView.getLayoutX() - intendedEmptyCard.getLayoutX() - 8));
-        tt.setToY(-1 * (imageView.getLayoutY() - intendedEmptyCard.getLayoutY() - 4));
-        tt.setDuration(Duration.seconds(0.5));
-        tt.play();
-        timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                intendedEmptyCard.setDisable(false);
-                intendedEmptyCard.setOpacity(1);
-                emptyCardsImages.get(intendedEmptyCard.getId() + "Photo").setImage(imageView.getImage());
-                button.setDisable(true);
-                button.setOpacity(0.5);
-            }
-        };
-        timer = new Timer();
-        timer.schedule(timerTask, 500);
+        imageView.setOpacity(0);
+        intendedEmptyCard.setDisable(false);
+        intendedEmptyCard.setOpacity(1);
+        emptyCardsImages.get(intendedEmptyCard.getId() + "Photo").setImage(imageView.getImage());
+        button.setDisable(true);
+        button.setOpacity(0.5);
     }
     @FXML public void unselectCard1(ActionEvent event){
         String id = selectedCardsImages.get(emptyCard1).getId();
-        /*if (id.contains("archer")){
-         *//*TranslateTransition tt = new TranslateTransition();
-            tt.setNode(archerPhoto);
-            tt.setToX(archerPhoto.getLayoutX() - archerCard.getLayoutX() - 6);
-            tt.setToY(archerPhoto.getLayoutY() - archerCard.getLayoutY() - 4);
-            tt.setDuration(Duration.seconds(0.5));
-            tt.play();
-            Iterator<Card> cardIterator = selectedCards.iterator();
-            while (cardIterator.hasNext()){
-                Card card = cardIterator.next();
-                if (card instanceof Archer) {
-                    selectedCards.remove(card);
-                    break;
-                }
-            }
-            selectedCardsImages.remove(emptyCard1);
-            selectedCardsObjects.remove(emptyCard1);
-            timer = new Timer();
-            timerTask = new TimerTask() {
-                @Override
-                public void run() {
-                    emptyCard1Photo.setImage(new Image(emptyCardImage));
-                    emptyCard1.setDisable(true);
-                    emptyCard1.setOpacity(0.5);
-                    archerCard.setDisable(false);
-                    archerCard.setOpacity(1);
-                }
-            };
-            timer.schedule(timerTask, 500);*//*
-            unselectIntendedCard(archerPhoto, archerCard, emptyCard1, emptyCard1Photo);
-            Iterator<Card> cardIterator = selectedCards.iterator();
-            while (cardIterator.hasNext()){
-                Card card = cardIterator.next();
-                if (card instanceof Archer) {
-                    selectedCards.remove(card);
-                    break;
-                }
-            }
-        }
-        else if(id.contains("dragon")){
-            unselectIntendedCard(dragonPhoto, dragonCard, emptyCard1, emptyCard1Photo);
-            Iterator<Card> cardIterator = selectedCards.iterator();
-            while (cardIterator.hasNext()){
-                Card card = cardIterator.next();
-                if (card instanceof BabyDragon) {
-                    selectedCards.remove(card);
-                    break;
-                }
-            }
-        }
-        else if (id.contains("barbarian")){
-            unselectIntendedCard(barbarianPhoto, barbarianCard, emptyCard1, emptyCard1Photo);
-            Iterator<Card> cardIterator = selectedCards.iterator();
-            while (cardIterator.hasNext()){
-                Card card = cardIterator.next();
-                if (card instanceof Barbarian) {
-                    selectedCards.remove(card);
-                    break;
-                }
-            }
-        }
-        else if (id.contains("giant")){
-            unselectIntendedCard(giantPhoto, giantCard, emptyCard1, emptyCard1Photo);
-            Iterator<Card> cardIterator = selectedCards.iterator();
-            while (cardIterator.hasNext()){
-                Card card = cardIterator.next();
-                if (card instanceof Giant) {
-                    selectedCards.remove(card);
-                    break;
-                }
-            }
-        }
-        else if (id.contains("pekka")){
-            unselectIntendedCard(pekkaPhoto, pekkaCard, emptyCard1, emptyCard1Photo);
-            Iterator<Card> cardIterator = selectedCards.iterator();
-            while (cardIterator.hasNext()){
-                Card card = cardIterator.next();
-                if (card instanceof MiniPekka) {
-                    selectedCards.remove(card);
-                    break;
-                }
-            }
-        }
-        else if (id.contains("valkyrie")){
-            unselectIntendedCard(valkyriePhoto, valkyrieCard, emptyCard1, emptyCard1Photo);
-            Iterator<Card> cardIterator = selectedCards.iterator();
-            while (cardIterator.hasNext()){
-                Card card = cardIterator.next();
-                if (card instanceof Valkyrie) {
-                    selectedCards.remove(card);
-                    break;
-                }
-            }
-        }
-        else if (id.contains("wizard")){
-            unselectIntendedCard(wizardPhoto, wizardCard, emptyCard1, emptyCard1Photo);
-            Iterator<Card> cardIterator = selectedCards.iterator();
-            while (cardIterator.hasNext()){
-                Card card = cardIterator.next();
-                if (card instanceof Wizard) {
-                    selectedCards.remove(card);
-                    break;
-                }
-            }
-        }
-        else if (id.contains("arrows")){
-            unselectIntendedCard(arrowsPhoto, arrowsCard, emptyCard1, emptyCard1Photo);
-            Iterator<Card> cardIterator = selectedCards.iterator();
-            while (cardIterator.hasNext()){
-                Card card = cardIterator.next();
-                if (card instanceof Arrows) {
-                    selectedCards.remove(card);
-                    break;
-                }
-            }
-        }
-        else if (id.contains("fireBall")){
-            unselectIntendedCard(fireBallPhoto, fireBallCard, emptyCard1, emptyCard1Photo);
-            Iterator<Card> cardIterator = selectedCards.iterator();
-            while (cardIterator.hasNext()){
-                Card card = cardIterator.next();
-                if (card instanceof FireBall) {
-                    selectedCards.remove(card);
-                    break;
-                }
-            }
-        }
-        else if (id.contains("rage")){
-            unselectIntendedCard(ragePhoto, rageCard, emptyCard1, emptyCard1Photo);
-            Iterator<Card> cardIterator = selectedCards.iterator();
-            while (cardIterator.hasNext()){
-                Card card = cardIterator.next();
-                if (card instanceof Rage) {
-                    selectedCards.remove(card);
-                    break;
-                }
-            }
-        }
-        else if (id.contains("cannon")){
-            unselectIntendedCard(cannonPhoto, cannonCard, emptyCard1, emptyCard1Photo);
-            Iterator<Card> cardIterator = selectedCards.iterator();
-            while (cardIterator.hasNext()){
-                Card card = cardIterator.next();
-                if (card instanceof Cannon) {
-                    selectedCards.remove(card);
-                    break;
-                }
-            }
-        }
-        else if (id.contains("inferno")){
-            unselectIntendedCard(infernoPhoto, infernoCard, emptyCard1, emptyCard1Photo);
-            Iterator<Card> cardIterator = selectedCards.iterator();
-            while (cardIterator.hasNext()){
-                Card card = cardIterator.next();
-                if (card instanceof InfernoTower) {
-                    selectedCards.remove(card);
-                    break;
-                }
-            }
-        }*/
         unselectViaEmptyCard(emptyCard1, emptyCard1Photo, id);
     }
     @FXML public void unselectCard2(ActionEvent event){
@@ -414,7 +238,7 @@ public class BattleDeckController {
         unselectViaEmptyCard(emptyCard8, emptyCard8Photo, id);
     }
     @FXML public void backToMenu(ActionEvent event) {
-        timer.cancel();
+
         try {
             currentUser.setDeck(selectedCards);
             currentUser.saveUser();
@@ -446,34 +270,6 @@ public class BattleDeckController {
     private void unselectViaEmptyCard(Button intendedEmptyCard, ImageView intendedCardPhoto,
                                       String buttonId){
         if (buttonId.contains("archer")){
-            /*TranslateTransition tt = new TranslateTransition();
-            tt.setNode(archerPhoto);
-            tt.setToX(archerPhoto.getLayoutX() - archerCard.getLayoutX() - 6);
-            tt.setToY(archerPhoto.getLayoutY() - archerCard.getLayoutY() - 4);
-            tt.setDuration(Duration.seconds(0.5));
-            tt.play();
-            Iterator<Card> cardIterator = selectedCards.iterator();
-            while (cardIterator.hasNext()){
-                Card card = cardIterator.next();
-                if (card instanceof Archer) {
-                    selectedCards.remove(card);
-                    break;
-                }
-            }
-            selectedCardsImages.remove(emptyCard1);
-            selectedCardsObjects.remove(emptyCard1);
-            timer = new Timer();
-            timerTask = new TimerTask() {
-                @Override
-                public void run() {
-                    emptyCard1Photo.setImage(new Image(emptyCardImage));
-                    emptyCard1.setDisable(true);
-                    emptyCard1.setOpacity(0.5);
-                    archerCard.setDisable(false);
-                    archerCard.setOpacity(1);
-                }
-            };
-            timer.schedule(timerTask, 500);*/
             unselectIntendedCard(archerPhoto, archerCard, intendedEmptyCard, intendedCardPhoto);
             Iterator<Card> cardIterator = selectedCards.iterator();
             while (cardIterator.hasNext()){
@@ -609,27 +405,14 @@ public class BattleDeckController {
     private void unselectIntendedCard(ImageView imageView, Button intendedCard,
                                       Button intendedEmptyCard,
                                       ImageView intendedEmptyCardImage){
-        TranslateTransition tt = new TranslateTransition();
-        tt.setNode(imageView);
-        tt.setToX(imageView.getLayoutX() - intendedCard.getLayoutX() - 6);
-        tt.setToY(imageView.getLayoutY() - intendedCard.getLayoutY() - 4);
-        tt.setDuration(Duration.seconds(0.5));
-        tt.play();
         selectedCardsImages.remove(intendedEmptyCard);
         selectedCardsObjects.remove(intendedEmptyCard);
-        timer = new Timer();
-        timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                intendedEmptyCardImage.setImage(new Image(emptyCardImage));
-                intendedEmptyCard.setDisable(true);
-                intendedEmptyCard.setOpacity(0.5);
-                intendedCard.setDisable(false);
-                intendedCard.setOpacity(1);
-            }
-        };
-        timer.schedule(timerTask, 500);
-
+        imageView.setOpacity(1);
+        intendedEmptyCardImage.setImage(new Image(emptyCardImage));
+        intendedEmptyCard.setDisable(true);
+        intendedEmptyCard.setOpacity(0.5);
+        intendedCard.setDisable(false);
+        intendedCard.setOpacity(1);
     }
     private Button findFirstDisableEmptyCard(){
         Button temp = null;
@@ -646,5 +429,89 @@ public class BattleDeckController {
         userCards = user.getDeck();
         selectedCards = userCards;
         System.out.println(userCards);
+        loadSelectedCards();
+    }
+    public void loadSelectedCards(){
+        if (selectedCards.size() != 0){
+            for (int i = 0; i < selectedCards.size(); i++) {
+                if (selectedCards.get(i) instanceof Archer){
+                    /*archerPhoto.setLayoutX(-1 * (archerPhoto.getLayoutX() -
+                            emptyCards.get(i).getLayoutX() - 8));
+                    archerPhoto.setLayoutY(-1 * (archerPhoto.getLayoutY() -
+                            emptyCards.get(i).getLayoutY() - 4));
+                    archerCard.setOpacity(0.5);
+                    archerCard.setDisable(true);
+                    emptyCards.get(i).setDisable(false);
+                    emptyCards.get(i).setOpacity(1);
+                    ImageView temp = getEmptyCardPhotoViaId(emptyCards.get(i).getId());
+                    temp.setImage(archerPhoto.getImage());*/
+                    setLoadedImageOnIntendedEmptyCard(emptyCards.get(i), archerCard, archerPhoto, selectedCards.get(i));
+                }
+                else if(selectedCards.get(i) instanceof BabyDragon)
+                    setLoadedImageOnIntendedEmptyCard(emptyCards.get(i), dragonCard,
+                            dragonPhoto, selectedCards.get(i));
+                else if(selectedCards.get(i) instanceof Barbarian)
+                    setLoadedImageOnIntendedEmptyCard(emptyCards.get(i), barbarianCard,
+                            barbarianPhoto, selectedCards.get(i));
+                else if(selectedCards.get(i) instanceof Giant)
+                    setLoadedImageOnIntendedEmptyCard(emptyCards.get(i), giantCard,
+                            giantPhoto, selectedCards.get(i));
+                else if(selectedCards.get(i) instanceof MiniPekka)
+                    setLoadedImageOnIntendedEmptyCard(emptyCards.get(i), pekkaCard,
+                            pekkaPhoto, selectedCards.get(i));
+                else if(selectedCards.get(i) instanceof Valkyrie)
+                    setLoadedImageOnIntendedEmptyCard(emptyCards.get(i), valkyrieCard,
+                            valkyriePhoto, selectedCards.get(i));
+                else if(selectedCards.get(i) instanceof Wizard)
+                    setLoadedImageOnIntendedEmptyCard(emptyCards.get(i), wizardCard,
+                            wizardPhoto, selectedCards.get(i));
+                else if(selectedCards.get(i) instanceof Arrows)
+                    setLoadedImageOnIntendedEmptyCard(emptyCards.get(i), arrowsCard,
+                            arrowsPhoto, selectedCards.get(i));
+                else if(selectedCards.get(i) instanceof FireBall)
+                    setLoadedImageOnIntendedEmptyCard(emptyCards.get(i), fireBallCard,
+                            fireBallPhoto, selectedCards.get(i));
+                else if(selectedCards.get(i) instanceof Rage)
+                    setLoadedImageOnIntendedEmptyCard(emptyCards.get(i), rageCard,
+                            ragePhoto, selectedCards.get(i));
+                else if(selectedCards.get(i) instanceof Cannon)
+                    setLoadedImageOnIntendedEmptyCard(emptyCards.get(i), cannonCard,
+                            cannonPhoto, selectedCards.get(i));
+                else if(selectedCards.get(i) instanceof InfernoTower)
+                    setLoadedImageOnIntendedEmptyCard(emptyCards.get(i), infernoCard,
+                            infernoPhoto, selectedCards.get(i));
+            }
+        }
+    }
+    private ImageView getEmptyCardPhotoViaId(String fxId){
+        if (fxId.contains("1"))
+            return emptyCard1Photo;
+        else if (fxId.contains("2"))
+            return emptyCard2Photo;
+        else if (fxId.contains("3"))
+            return emptyCard3Photo;
+        else if (fxId.contains("4"))
+            return emptyCard4Photo;
+        else if (fxId.contains("5"))
+            return emptyCard5Photo;
+        else if (fxId.contains("6"))
+            return emptyCard6Photo;
+        else if (fxId.contains("7"))
+            return emptyCard7Photo;
+        else if (fxId.contains("8"))
+            return emptyCard8Photo;
+        return null;
+    }
+    private void setLoadedImageOnIntendedEmptyCard(Button intendedEmptyCard, Button intendedCard,
+                                                   ImageView selectedCardPhoto, Card card){
+        selectedCardPhoto.setOpacity(0);
+        intendedCard.setOpacity(0.5);
+        intendedCard.setDisable(true);
+        intendedEmptyCard.setDisable(false);
+        intendedEmptyCard.setOpacity(1);
+        ImageView temp = getEmptyCardPhotoViaId(intendedEmptyCard.getId());
+        temp.setImage(selectedCardPhoto.getImage());
+        selectedCardsImages.put(intendedEmptyCard, selectedCardPhoto);
+        selectedCardsObjects.put(intendedEmptyCard, card);
     }
 }

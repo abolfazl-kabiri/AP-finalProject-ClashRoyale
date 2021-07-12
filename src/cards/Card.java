@@ -11,4 +11,8 @@ public abstract class Card implements Serializable {
         this.path = path;
         this.level = level;
     }
+
+    public String getPath() {
+        return path;
+    }
 }

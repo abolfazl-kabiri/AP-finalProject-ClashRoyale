@@ -265,9 +265,7 @@ public class MainMenuController {
             e.printStackTrace();
         }
     }
-
-
-
+    
     public void setCurrentUser(User user) {
         this.currentUser = user;
     }
