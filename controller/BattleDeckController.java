@@ -13,7 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import sample.DataBase;
 import sample.User;
 
 import java.io.IOException;
@@ -102,7 +101,7 @@ public class BattleDeckController {
 
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
-            Card card = new Archer(0,0);
+            Card card = new Archer();
             moveImageViewToIntendedEmptyCard(archerPhoto, card, archerCard, temp);
         }
     }
@@ -110,7 +109,7 @@ public class BattleDeckController {
 
         Button temp = findFirstDisableEmptyCard();
         if(temp != null){
-            Card card = new BabyDragon(0,0);
+            Card card = new BabyDragon();
             moveImageViewToIntendedEmptyCard(dragonPhoto, card, dragonCard, temp);
         }
     }
@@ -118,7 +117,7 @@ public class BattleDeckController {
 
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
-            Card card = new Barbarian(0 ,0);
+            Card card = new Barbarian();
             moveImageViewToIntendedEmptyCard(barbarianPhoto, card, barbarianCard, temp);
         }
     }
@@ -126,7 +125,7 @@ public class BattleDeckController {
 
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
-            Card card = new Giant(0,0);
+            Card card = new Giant();
             moveImageViewToIntendedEmptyCard(giantPhoto, card, giantCard, temp);
         }
     }
@@ -134,7 +133,7 @@ public class BattleDeckController {
 
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
-            Card card = new MiniPekka(0, 0);
+            Card card = new MiniPekka();
             moveImageViewToIntendedEmptyCard(pekkaPhoto, card, pekkaCard, temp);
         }
     }
@@ -142,7 +141,7 @@ public class BattleDeckController {
 
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
-            Card card = new Valkyrie(0,0);
+            Card card = new Valkyrie();
             moveImageViewToIntendedEmptyCard(valkyriePhoto, card, valkyrieCard, temp);
         }
     }
@@ -150,7 +149,7 @@ public class BattleDeckController {
 
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
-            Card card = new Wizard(0,0);
+            Card card = new Wizard();
             moveImageViewToIntendedEmptyCard(wizardPhoto, card, wizardCard, temp);
         }
     }
@@ -158,7 +157,7 @@ public class BattleDeckController {
 
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
-            Card card = new Arrows(0);
+            Card card = new Arrows();
             moveImageViewToIntendedEmptyCard(arrowsPhoto, card, arrowsCard, temp);
         }
     }
@@ -166,7 +165,7 @@ public class BattleDeckController {
 
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
-            Card card = new FireBall(0);
+            Card card = new FireBall();
             moveImageViewToIntendedEmptyCard(fireBallPhoto, card, fireBallCard, temp);
         }
     }
@@ -182,7 +181,7 @@ public class BattleDeckController {
 
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
-            Card card = new Cannon(0,0);
+            Card card = new Cannon();
             moveImageViewToIntendedEmptyCard(cannonPhoto, card, cannonCard, temp);
         }
     }
@@ -190,7 +189,7 @@ public class BattleDeckController {
 
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
-            Card card = new InfernoTower(0,0);
+            Card card = new InfernoTower();
             moveImageViewToIntendedEmptyCard(infernoPhoto, card, infernoCard, temp);
         }
     }
