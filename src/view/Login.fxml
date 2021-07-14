@@ -69,9 +69,9 @@
       </Pane>
    </right>
    <left>
-      <ImageView fitHeight="503.0" fitWidth="245.0" pickOnBounds="true" BorderPane.alignment="CENTER">
+      <ImageView fitHeight="503.0" fitWidth="249.0" pickOnBounds="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../photos/loginPhotos/screen-1.jpg" />
+            <Image url="@../photos/loginPhotos/log2.png" />
          </image>
       </ImageView>
    </left>

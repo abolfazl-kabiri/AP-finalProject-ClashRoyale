@@ -15,168 +15,141 @@
             <Image url="@../photos/main%20menu%20images/photo_2021-07-10_01-58-12.jpg" />
          </image>
       </ImageView>
-      <FlowPane hgap="5.0" layoutX="22.0" layoutY="14.0" prefHeight="78.0" prefWidth="200.0">
+      <FlowPane layoutX="25.0" layoutY="-6.0" orientation="VERTICAL" prefHeight="517.0" prefWidth="490.0" vgap="6.0">
          <children>
-            <Button fx:id="profileButton" mnemonicParsing="false" onAction="#showProfile" onMouseEntered="#resizeProfPhoto" onMouseExited="#shrinkProfPhoto" prefHeight="86.0" prefWidth="75.0" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fx:id="profPhoto" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/main%20menu%20images/prof_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Label prefHeight="41.0" prefWidth="86.0" textFill="WHITE">
-               <graphic>
-                  <ImageView fx:id="profTag" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/main%20menu%20images/prof%20tag_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
+            <FlowPane hgap="5.0" prefHeight="78.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="profileButton" mnemonicParsing="false" onAction="#showProfile" onMouseEntered="#resizeProfPhoto" onMouseExited="#shrinkProfPhoto" prefHeight="86.0" prefWidth="75.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fx:id="profPhoto" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photos/main%20menu%20images/prof_00000.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label prefHeight="41.0" prefWidth="86.0" textFill="WHITE">
+                     <graphic>
+                        <ImageView fx:id="profTag" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photos/main%20menu%20images/prof%20tag_00000.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Label>
+               </children>
+            </FlowPane>
+            <FlowPane hgap="5.0" prefHeight="67.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="battleDeckButton" mnemonicParsing="false" onAction="#showBattleDeck" onMouseEntered="#resizeDeckPhoto" onMouseExited="#shrinkDeckPhoto" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fx:id="deckPhoto" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photos/main%20menu%20images/battle%20deck_00000.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label prefHeight="41.0" prefWidth="86.0" textFill="WHITE">
+                     <graphic>
+                        <ImageView fx:id="deckTag" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photos/main%20menu%20images/battle%20deck%20tag_00000.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+               </children>
+            </FlowPane>
+            <FlowPane hgap="5.0" prefHeight="62.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="battleHistoryButton" mnemonicParsing="false" onAction="#showBattleHistory" onMouseEntered="#resizeHistoryPhoto" onMouseExited="#shrinkHistoryPhoto" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fx:id="historyPhoto" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photos/main%20menu%20images/battle%20history_00000.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label prefHeight="41.0" prefWidth="86.0" textFill="WHITE">
+                     <graphic>
+                        <ImageView fx:id="historyTag" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photos/main%20menu%20images/battle%20history%20tag_00000.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+               </children>
+            </FlowPane>
+            <FlowPane hgap="5.0" prefHeight="64.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="trainingCampButton" mnemonicParsing="false" onMouseEntered="#resizeCampPhoto" onMouseExited="#shrinkCampPhoto" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fx:id="campPhoto" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photos/main%20menu%20images/training%20camp_00000.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label prefHeight="41.0" prefWidth="86.0" textFill="WHITE">
+                     <graphic>
+                        <ImageView fx:id="campTag" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photos/main%20menu%20images/training%20camp%20tag_00000.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+               </children>
+            </FlowPane>
+            <FlowPane hgap="5.0" prefHeight="55.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="oneVOneButton" mnemonicParsing="false" onMouseEntered="#resizeOnePhoto" onMouseExited="#shrinkOnePhoto" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fx:id="onePhoto" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photos/main%20menu%20images/1v1_00000.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label prefHeight="41.0" prefWidth="86.0" textFill="WHITE">
+                     <graphic>
+                        <ImageView fx:id="oneTag" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photos/main%20menu%20images/1%20v%201%20tag_00000.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+               </children>
+            </FlowPane>
+            <FlowPane hgap="5.0" prefHeight="55.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="twoVTwoButton" mnemonicParsing="false" onMouseEntered="#resizeTwoPhoto" onMouseExited="#shrinkTwoPhoto" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fx:id="twoPhoto" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photos/main%20menu%20images/Comp%201_00000.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label prefHeight="41.0" prefWidth="86.0" textFill="WHITE">
+                     <graphic>
+                        <ImageView fx:id="twoTag" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photos/main%20menu%20images/1%20v%201%20tag_00000.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
+               </children>
+            </FlowPane>
          </children>
       </FlowPane>
-      <FlowPane hgap="5.0" layoutX="22.0" layoutY="104.0" prefHeight="67.0" prefWidth="200.0">
-         <children>
-            <Button fx:id="battleDeckButton" mnemonicParsing="false" onAction="#showBattleDeck" onMouseEntered="#resizeDeckPhoto" onMouseExited="#shrinkDeckPhoto" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fx:id="deckPhoto" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/main%20menu%20images/battle%20deck_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Label prefHeight="41.0" prefWidth="86.0" textFill="WHITE">
-               <graphic>
-                  <ImageView fx:id="deckTag" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/main%20menu%20images/battle%20deck%20tag_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-         </children>
-      </FlowPane>
-      <FlowPane hgap="5.0" layoutX="22.0" layoutY="184.0" prefHeight="62.0" prefWidth="200.0">
-         <children>
-            <Button fx:id="battleHistoryButton" mnemonicParsing="false" onAction="#showBattleHistory" onMouseEntered="#resizeHistoryPhoto" onMouseExited="#shrinkHistoryPhoto" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fx:id="historyPhoto" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/main%20menu%20images/battle%20history_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Label prefHeight="41.0" prefWidth="86.0" textFill="WHITE">
-               <graphic>
-                  <ImageView fx:id="historyTag" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/main%20menu%20images/battle%20history%20tag_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-         </children>
-      </FlowPane>
-      <FlowPane hgap="5.0" layoutX="22.0" layoutY="264.0" prefHeight="64.0" prefWidth="200.0">
-         <children>
-            <Button fx:id="trainingCampButton" mnemonicParsing="false" onAction="#showTrainingCamp" onMouseEntered="#resizeCampPhoto" onMouseExited="#shrinkCampPhoto" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fx:id="campPhoto" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/main%20menu%20images/training%20camp_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Label prefHeight="41.0" prefWidth="86.0" textFill="WHITE">
-               <graphic>
-                  <ImageView fx:id="campTag" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/main%20menu%20images/training%20camp%20tag_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-         </children>
-      </FlowPane>
-      <FlowPane hgap="5.0" layoutX="22.0" layoutY="344.0" prefHeight="55.0" prefWidth="200.0">
-         <children>
-            <Button fx:id="oneVOneButton" mnemonicParsing="false" onMouseEntered="#resizeOnePhoto" onMouseExited="#shrinkOnePhoto" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fx:id="onePhoto" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/main%20menu%20images/1v1_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Label prefHeight="41.0" prefWidth="86.0" textFill="WHITE">
-               <graphic>
-                  <ImageView fx:id="oneTag" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/main%20menu%20images/1%20v%201%20tag_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-         </children>
-      </FlowPane>
-      <FlowPane hgap="5.0" layoutX="22.0" layoutY="424.0" prefHeight="55.0" prefWidth="200.0">
-         <children>
-            <Button fx:id="twoVTwoButton" mnemonicParsing="false" onMouseEntered="#resizeTwoPhoto" onMouseExited="#shrinkTwoPhoto" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fx:id="twoPhoto" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/main%20menu%20images/2v2_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Label prefHeight="41.0" prefWidth="86.0" textFill="WHITE">
-               <graphic>
-                  <ImageView fx:id="twoTag" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/main%20menu%20images/1%20v%201%20tag_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-         </children>
-      </FlowPane>
-      <ImageView fx:id="profPhotoLowOpacity" fitHeight="474.0" fitWidth="402.0" layoutX="321.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/main%20menu%20images/profile_low_opacity_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="deckPhotoLowOpacity" fitHeight="474.0" fitWidth="402.0" layoutX="321.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/main%20menu%20images/battle%20deck_low_opacity_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="historyPhotoLowOpacity" fitHeight="474.0" fitWidth="402.0" layoutX="321.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/main%20menu%20images/battle%20history_low_opacity_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="campPhotoLowOpacity" fitHeight="474.0" fitWidth="402.0" layoutX="321.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/main%20menu%20images/training%20Camp_low_opacity_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="onePhotoLowOpacity" fitHeight="474.0" fitWidth="402.0" layoutX="321.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/main%20menu%20images/1v1_low_opacity_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="twoPhotoLowOpacity" fitHeight="474.0" fitWidth="402.0" layoutX="321.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/main%20menu%20images/2v2_low_opacity_00000.png" />
-         </image>
-      </ImageView>
    </children>
    <padding>
       <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />

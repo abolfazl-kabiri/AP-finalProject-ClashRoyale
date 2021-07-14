@@ -1,6 +1,7 @@
 package controller;
 
 import cards.Card;
+import cards.Soldier;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -11,16 +12,23 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import sample.Player;
 import sample.User;
+import towers.Tower;
 
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class TrainingCampController {
     private User currentUser;
+    private Player currentPlayer;
     private ArrayList<Card> cards;
     private ArrayList<ImageView> insideGameCards;
+    private ArrayList<Tower> playerTowers;
+    private ArrayList<Tower> enemyTowers;
+    private ArrayList<ImageView> towerImages;
     private int wholeTime = 180;
     private GraphicsContext gc;
     @FXML private Canvas grassBackGround;
@@ -30,6 +38,13 @@ public class TrainingCampController {
     @FXML private ImageView onActionCard3;
     @FXML private ImageView onActionCard4;
     @FXML private ImageView nextCard;
+    @FXML private ImageView playerKing;
+    @FXML private ImageView enemyKing;
+    @FXML private ImageView playerLeftCrown;
+    @FXML private ImageView playerRightCrown;
+    @FXML private ImageView enemyRightCrown;
+    @FXML private ImageView enemyLeftCrown;
+
     public void initialize(){
         insideGameCards = new ArrayList<>();
         insideGameCards.add(onActionCard1);
@@ -37,6 +52,13 @@ public class TrainingCampController {
         insideGameCards.add(onActionCard3);
         insideGameCards.add(onActionCard4);
         insideGameCards.add(nextCard);
+        towerImages = new ArrayList<>();
+        towerImages.add(playerKing);
+        towerImages.add(enemyKing);
+        towerImages.add(playerRightCrown);
+        towerImages.add(playerLeftCrown);
+        towerImages.add(enemyRightCrown);
+        towerImages.add(enemyLeftCrown);
         gc = grassBackGround.getGraphicsContext2D();
         for (int i = 0; i < 18; i++) {
             for (int j = 0; j < 32; j++) {
@@ -67,16 +89,28 @@ public class TrainingCampController {
     }
     public void setCurrentUser(User user) {
         this.currentUser = user;
-        getUserCards();
+        this.currentPlayer = currentUser.getPlayer();
+        setTowerImages();
+        getPlayerCards();
     }
-    private void getUserCards(){
-        cards = currentUser.getDeck();
+    private void getPlayerCards(){
+        cards = currentPlayer.getSelectedCards();
         setOnActionCards();
     }
     private void setOnActionCards(){
-        for (int i = 0; i < insideGameCards.size(); i++) {
-            insideGameCards.get(i).setImage(new Image(cards.get(i).getPath()));
+        for (int i = 0; i < insideGameCards.size() - 1; i++) {
+            insideGameCards.get(i).setImage(new Image(currentPlayer.getPlayableCards().get(i).getPath()));
         }
+        insideGameCards.get(insideGameCards.size()-1).setImage(new Image(currentPlayer.getNextCard().getPath()));
+    }
+    private void setTowerImages(){
+        playerKing.setImage(new Image(currentPlayer.getKingTower().getPath()));
+        playerRightCrown.setImage(new Image(currentPlayer.getRightTower().getPath()));
+        playerLeftCrown.setImage(new Image(currentPlayer.getLeftTower().getPath()));
+
+        enemyKing.setImage(new Image(".\\photos\\inside game models\\red king building_00000.png"));
+        enemyRightCrown.setImage(new Image(".\\photos\\inside game models\\red queen building_00000.png"));
+        enemyLeftCrown.setImage(new Image(".\\photos\\inside game models\\red queen building_00000.png"));
     }
 
 }

@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
    <children>
       <Pane layoutX="250.0" prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #121212;">
@@ -89,7 +90,7 @@
       </Pane>
       <ImageView fitHeight="500.0" fitWidth="250.0" pickOnBounds="true">
          <image>
-            <Image url="@../photos/signInPhotos/66-661328_pekka-appeared-clash-royale-clash-of-clans-dbz.jpg" />
+            <Image url="@../photos/signInPhotos/sign.png" />
          </image>
       </ImageView>
    </children>

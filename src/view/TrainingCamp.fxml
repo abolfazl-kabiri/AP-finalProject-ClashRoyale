@@ -18,36 +18,12 @@
          </image>
       </ImageView>
       <Canvas fx:id="grassBackGround" height="480.0" layoutX="165.0" layoutY="10.0" width="270.0" />
-      <ImageView fitHeight="60.0" fitWidth="74.0" layoutX="275.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/inside%20game%20models/red%20king%20building_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="74.0" layoutX="275.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/inside%20game%20models/blue%20king%20buliding_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="74.0" layoutX="183.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/inside%20game%20models/blue%20queen%20building_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="74.0" layoutX="377.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/inside%20game%20models/blue%20queen%20building_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="74.0" layoutX="183.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/inside%20game%20models/red%20queen%20building_00000.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="74.0" layoutX="377.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../photos/inside%20game%20models/red%20queen%20building_00000.png" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="enemyKing" fitHeight="60.0" fitWidth="74.0" layoutX="275.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true"/>
+      <ImageView fx:id="playerKing" fitHeight="60.0" fitWidth="74.0" layoutX="275.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true"/>
+      <ImageView fx:id="playerLeftCrown" fitHeight="60.0" fitWidth="74.0" layoutX="183.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true"/>
+      <ImageView fx:id="playerRightCrown" fitHeight="60.0" fitWidth="74.0" layoutX="377.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true"/>
+      <ImageView fx:id="enemyLeftCrown" fitHeight="60.0" fitWidth="74.0" layoutX="183.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true"/>
+      <ImageView fx:id="enemyRightCrown" fitHeight="60.0" fitWidth="74.0" layoutX="377.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true"/>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#47a0ef" height="30.0" layoutX="165.0" layoutY="235.0" stroke="BLACK" strokeType="INSIDE" width="270.0" />
       <ImageView fitHeight="50.0" fitWidth="26.0" layoutX="189.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -113,7 +89,7 @@
          </children></Pane>
       <Pane layoutX="439.0" prefHeight="500.0" prefWidth="161.0" style="-fx-background-color: #1b4971;">
          <children>
-            <Label fx:id="timeMonitor" layoutX="40.0" layoutY="14.0" prefHeight="54.0" prefWidth="81.0" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="timeMonitor" layoutX="40.0" layoutY="14.0" prefHeight="54.0" prefWidth="95.0" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Barlow Condensed SemiBold" size="40.0" />
                </font>
