@@ -15,14 +15,17 @@ public class Player implements Serializable {
     private ArrayList<Card> playableCards;
     private ArrayList<Tower> towers;
     private Card nextCard;
-    private KingTower kingTower = new KingTower(0,0);
-    private PrincessTower rightTower = new PrincessTower(0,0);
-    private PrincessTower leftTower = new PrincessTower(0,0);
+    private KingTower kingTower;
+    private PrincessTower rightTower;
+    private PrincessTower leftTower;
     private int elixir;
 
     public Player(ArrayList<Card> userCards, int level) {
         this.playerLevel = level;
         this.selectedCards = userCards;
+        kingTower = new KingTower(0,0);
+        rightTower = new PrincessTower(0,0);
+        leftTower = new PrincessTower(0,0);
         towers = new ArrayList<>();
         towers.add(kingTower);
         towers.add(rightTower);

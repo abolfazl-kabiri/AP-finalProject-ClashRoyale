@@ -10,14 +10,16 @@ public abstract class Tower implements Serializable {
     protected double range;
     protected boolean isActive;
     protected String path;
+    protected int numberOfCrowns;
 
-    public Tower(int hp, int damage, double hitSpeed, double range, boolean isActive, String path) {
+    public Tower(int hp, int damage, double hitSpeed, double range, boolean isActive, String path, int numberOfCrowns) {
         this.hp = hp;
         this.damage = damage;
         this.hitSpeed = hitSpeed;
         this.range = range;
         this.isActive = isActive;
         this.path = path;
+        this.numberOfCrowns = numberOfCrowns;
     }
 
     public String getPath() {
@@ -43,5 +45,8 @@ public abstract class Tower implements Serializable {
     }
     public void setActive(boolean active) {
         isActive = active;
+    }
+    public int getNumberOfCrowns() {
+        return numberOfCrowns;
     }
 }

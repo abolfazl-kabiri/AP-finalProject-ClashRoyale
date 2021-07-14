@@ -15,6 +15,7 @@ public class User implements Serializable {
     private File userFile;
     private ArrayList<String> battleHistory;
     private ArrayList<Card> deck;
+    private Player player;
 
 
     public User(String username, String password) {
@@ -48,7 +49,6 @@ public class User implements Serializable {
     public int hashCode() {
         return Objects.hash(username, password, level, hp);
     }
-
     public void saveUser(){
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(userFile);
@@ -60,24 +60,25 @@ public class User implements Serializable {
             e.printStackTrace();
         }
     }
-
     public String getUsername() {
         return username;
     }
-
     public int getLevel() {
         return level;
     }
-
     public ArrayList<String> getBattleHistory() {
         return battleHistory;
     }
-
     public ArrayList<Card> getDeck() {
         return deck;
     }
-
     public void setDeck(ArrayList<Card> deck) {
         this.deck = deck;
+    }
+    public Player getPlayer() {
+        return player;
+    }
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

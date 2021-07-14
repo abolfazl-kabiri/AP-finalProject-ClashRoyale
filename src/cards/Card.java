@@ -3,13 +3,12 @@ package cards;
 import java.io.Serializable;
 
 public abstract class Card implements Serializable {
-    protected long cost;
+    protected int cost;
     protected String path;
     protected int level;
-    public Card(long cost, String path, int level){
+    public Card(int cost, String path){
         this.cost = cost;
         this.path = path;
-        this.level = level;
     }
 
     public String getPath() {
