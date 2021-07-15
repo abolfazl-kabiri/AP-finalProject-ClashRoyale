@@ -3,27 +3,22 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TrainingCampController">
+<AnchorPane fx:id="pane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #1b4971;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TrainingCampController">
    <children>
-      <ImageView fitHeight="500.0" fitWidth="278.0" layoutX="161.0" pickOnBounds="true">
-         <image>
-            <Image url="@../photos/batlle%20deck%20photos/Wood-Boards-Texture.jpg" />
-         </image>
-      </ImageView>
       <Canvas fx:id="grassBackGround" height="480.0" layoutX="165.0" layoutY="10.0" width="270.0" />
-      <ImageView fx:id="enemyKingImage" fitHeight="60.0" fitWidth="74.0" layoutX="275.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="playerKingImage" fitHeight="60.0" fitWidth="74.0" layoutX="275.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="playerLeftTowerImage" fitHeight="60.0" fitWidth="74.0" layoutX="183.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="playerRightTowerImage" fitHeight="60.0" fitWidth="74.0" layoutX="377.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="enemyLeftTowerImage" fitHeight="60.0" fitWidth="74.0" layoutX="183.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true"/>
-      <ImageView fx:id="enemyRightTowerImage" fitHeight="60.0" fitWidth="74.0" layoutX="377.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true"/>
+      <ProgressBar fx:id="kingHpBar" layoutX="279.0" layoutY="421.0" prefHeight="10.0" prefWidth="41.0" progress="1.0" />
+      <ProgressBar fx:id="leftPrincessHpBar" layoutX="182.0" layoutY="355.0" prefHeight="10.0" prefWidth="41.0" progress="1.0" />
+      <ProgressBar fx:id="rightPrincessHpBar" layoutX="376.0" layoutY="355.0" prefHeight="10.0" prefWidth="41.0" progress="1.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#47a0ef" height="30.0" layoutX="165.0" layoutY="235.0" stroke="BLACK" strokeType="INSIDE" width="270.0" />
       <ImageView fitHeight="50.0" fitWidth="26.0" layoutX="189.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -35,85 +30,275 @@
             <Image url="@../photos/inside%20game%20models/bridge_00000.png" />
          </image>
       </ImageView>
-      <Pane prefHeight="500.0" prefWidth="161.0" style="-fx-background-color: #1b4971;">
+      <Button fx:id="card1" layoutX="18.0" layoutY="10.0" mnemonicParsing="false" onMouseDragged="#pickCard1" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fx:id="onActionCard1" fitHeight="82.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="18.0" layoutY="100.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fx:id="onActionCard2" fitHeight="82.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="18.0" layoutY="190.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fx:id="onActionCard3" fitHeight="82.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="18.0" layoutY="280.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fx:id="onActionCard4" fitHeight="82.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fitHeight="25.0" fitWidth="68.0" layoutX="25.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../photos/inside%20game%20models/next_00000.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="29.0" layoutY="413.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fx:id="nextCard" fitHeight="74.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label fx:id="timeMonitor" layoutX="473.0" layoutY="14.0" prefHeight="54.0" prefWidth="106.0" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="40.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="111.0" fitWidth="81.0" layoutX="486.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../photos/inside%20game%20models/red%20crown_00000.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="111.0" fitWidth="81.0" layoutX="486.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../photos/inside%20game%20models/blue%20crown_00000.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="519.0" layoutY="111.0" text="0" textFill="WHITE">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="33.0" />
+         </font>
+      </Label>
+      <Label layoutX="519.0" layoutY="339.0" text="0" textFill="WHITE">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="33.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="elixirBar" layoutX="-71.0" layoutY="187.0" prefHeight="19.0" prefWidth="360.0" progress="1.0" rotate="-90.0" />
+      <FlowPane layoutX="125.0" layoutY="325.0" prefHeight="39.0" prefWidth="26.0">
          <children>
-            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fx:id="onActionCard1" fitHeight="82.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button layoutX="14.0" layoutY="104.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fx:id="onActionCard2" fitHeight="82.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button layoutX="14.0" layoutY="194.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fx:id="onActionCard3" fitHeight="82.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button layoutX="14.0" layoutY="284.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fx:id="onActionCard4" fitHeight="82.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <ImageView fitHeight="25.0" fitWidth="68.0" layoutX="21.0" layoutY="408.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../photos/inside%20game%20models/next_00000.png" />
-               </image>
-            </ImageView>
-            <Button layoutX="25.0" layoutY="437.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
-               <graphic>
-                  <ImageView fx:id="nextCard" fitHeight="74.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../photos/batlle%20deck%20photos/empty%20card_00000.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-         </children></Pane>
-      <Pane layoutX="439.0" prefHeight="500.0" prefWidth="161.0" style="-fx-background-color: #1b4971;">
+            <Label prefHeight="30.0" prefWidth="14.0" text="-" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="30.0" />
+               </font>
+            </Label>
+            <Label text="1" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="125.0" layoutY="288.0" prefHeight="31.0" prefWidth="26.0">
          <children>
-            <Label fx:id="timeMonitor" layoutX="40.0" layoutY="14.0" prefHeight="54.0" prefWidth="96.0" textAlignment="CENTER" textFill="WHITE">
+            <Label prefHeight="30.0" prefWidth="14.0" text="-" textFill="WHITE">
                <font>
-                  <Font name="Barlow Condensed SemiBold" size="40.0" />
+                  <Font name="Barlow Condensed SemiBold" size="30.0" />
                </font>
             </Label>
-            <ImageView fitHeight="111.0" fitWidth="81.0" layoutX="40.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+            <Label text="2" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="125.0" layoutY="252.0" prefHeight="19.0" prefWidth="26.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="14.0" text="-" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="30.0" />
+               </font>
+            </Label>
+            <Label text="3" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="125.0" layoutY="215.0" prefHeight="39.0" prefWidth="38.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="14.0" text="-" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="30.0" />
+               </font>
+            </Label>
+            <Label text="4" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="126.0" layoutY="183.0" prefHeight="27.0" prefWidth="34.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="14.0" text="-" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="30.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="14.0" text="5" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="126.0" layoutY="144.0" prefHeight="27.0" prefWidth="34.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="14.0" text="-" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="30.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="14.0" text="6" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="126.0" layoutY="109.0" prefHeight="27.0" prefWidth="34.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="14.0" text="-" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="30.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="14.0" text="7" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="126.0" layoutY="73.0" prefHeight="39.0" prefWidth="34.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="14.0" text="-" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="30.0" />
+               </font>
+            </Label>
+            <Label prefHeight="27.0" prefWidth="9.0" text="8" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="126.0" layoutY="36.0" prefHeight="27.0" prefWidth="34.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="14.0" text="-" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="30.0" />
+               </font>
+            </Label>
+            <Label prefHeight="30.0" prefWidth="14.0" text="9" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="126.0" layoutY="1.0" prefHeight="37.0" prefWidth="34.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="14.0" text="-" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="30.0" />
+               </font>
+            </Label>
+            <Label prefHeight="34.0" prefWidth="17.0" text="10" textFill="WHITE">
+               <font>
+                  <Font name="Barlow Condensed SemiBold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+      <Button layoutX="473.0" layoutY="456.0" mnemonicParsing="false" onAction="#openEmoteWindow" prefHeight="19.0" prefWidth="26.0" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../photos/inside%20game%20models/red%20crown_00000.png" />
+                  <Image url="@../photos/inside%20game%20models/emote%20presenter_00000.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="111.0" fitWidth="81.0" layoutX="40.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true">
+         </graphic>
+      </Button>
+      <Pane fx:id="emotesWindow" layoutX="357.0" layoutY="387.0" prefHeight="78.0" prefWidth="232.0">
+         <children>
+            <ImageView fitHeight="77.0" fitWidth="231.0" pickOnBounds="true">
                <image>
-                  <Image url="@../photos/inside%20game%20models/blue%20crown_00000.png" />
+                  <Image url="@../photos/inside%20game%20models/emote_window_00000.png" />
                </image>
             </ImageView>
-            <Label layoutX="73.0" layoutY="381.0" text="0" textFill="WHITE">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="33.0" />
-               </font>
-            </Label>
-            <Label layoutX="73.0" layoutY="137.0" text="0" textFill="WHITE">
-               <font>
-                  <Font name="Barlow Condensed SemiBold" size="33.0" />
-               </font>
-            </Label>
-         </children></Pane>
+            <HBox layoutX="12.0" layoutY="8.0" prefHeight="62.0" prefWidth="208.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#angryEmote" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="52.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photos/inside%20game%20models/Angry_King.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#sadEmote" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="52.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photos/inside%20game%20models/sad_king_00000.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="80.0" layoutY="10.0" mnemonicParsing="false" onAction="#happyEmote" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="52.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../photos/inside%20game%20models/happy_king_00000.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <ImageView fx:id="kingEmote" fitHeight="104.0" fitWidth="68.0" layoutX="181.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../photos/inside%20game%20models/135-1354443_clash-royale-king-png.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

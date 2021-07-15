@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import sample.User;
 
@@ -32,27 +35,33 @@ public class SignUpController implements Initializable {
     @FXML private Hyperlink loginLink;
     @FXML private Label wrongPassword;
 //    private MediaPlayer player;
-
-    private AudioInputStream audioInputStream;
-    private Clip clip;
+//
+//    private AudioInputStream audioInputStream;
+//    private Clip clip;
 
     private Stage stage;
     private Parent root;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            audioInputStream = AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\LoginMusic.wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        }
+
+//        Media media = new Media(getClass().getResource("/sound effects and musics/LoginMusic.wav").toString());
+//        player = new MediaPlayer(media);
+//        player.setVolume(0.5);
+//        player.setCycleCount(Timeline.INDEFINITE);
+//        player.play();
+//        try {
+//            audioInputStream = AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\LoginMusic.wav"));
+//            clip = AudioSystem.getClip();
+//            clip.open(audioInputStream);
+//            clip.start();
+//        } catch (LineUnavailableException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (UnsupportedAudioFileException e) {
+//            e.printStackTrace();
+//        }
         visiblePassword.setVisible(false);
         visiblePassword.setDisable(true);
         hidePasswordButton.setDisable(true);
@@ -63,16 +72,11 @@ public class SignUpController implements Initializable {
         hideRepeatPasswordButton.setDisable(true);
         signUpHighlightedButton.setVisible(false);
         signUpHighlightedButton.setDisable(true);
-//        Media media =
-//                new Media(Paths.get(new File("LoginMusic.wav").getAbsolutePath()).toUri().toString());
-//        player = new MediaPlayer(media);
-//        player.setCycleCount(Timeline.INDEFINITE);
-//        player.setVolume(0.3);
-//        player.play();
+
     }
     @FXML public void linkToLogin(ActionEvent event) {
 //        player.stop();
-        clip.stop();
+//        clip.stop();
 
         try {
             stage = (Stage) loginLink.getScene().getWindow();
@@ -96,7 +100,7 @@ public class SignUpController implements Initializable {
             if(password.equals(repeatedPassword)){
                 User user = new User(username,password);
                 //        player.stop();
-                clip.stop();
+     //           clip.stop();
                 loadMainMenu(user);
             } else {
                 wrongPassword.setText("different passwords");

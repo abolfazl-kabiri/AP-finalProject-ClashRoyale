@@ -11,10 +11,14 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import sample.User;
 
+import javax.sound.sampled.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -29,6 +33,7 @@ public class BattleDeckController {
     private HashMap<String, ImageView> emptyCardsImages;
     private Stage stage;
     private Parent root;
+ //   private MediaPlayer player;
     @FXML private Button backButton;
     @FXML private Button backButtonHighlighted;
     @FXML private Button emptyCard1;
@@ -71,6 +76,9 @@ public class BattleDeckController {
     @FXML private ImageView ragePhoto;
     @FXML private ImageView cannonPhoto;
     @FXML private ImageView infernoPhoto;
+//    private AudioInputStream audioInputStream;
+//    private Clip clip;
+
     public void initialize(){
         emptyCards = new ArrayList<>();
         selectedCardsImages = new HashMap<>();
@@ -204,6 +212,25 @@ public class BattleDeckController {
         emptyCardsImages.get(intendedEmptyCard.getId() + "Photo").setImage(imageView.getImage());
         button.setDisable(true);
         button.setOpacity(0.5);
+
+//        try {
+//            audioInputStream = AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\select.wav"));
+//            clip = AudioSystem.getClip();
+//            clip.open(audioInputStream);
+//            clip.start();
+//        } catch (LineUnavailableException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (UnsupportedAudioFileException e) {
+//            e.printStackTrace();
+//        }
+
+
+//        Media media = new Media(getClass().getResource("/sound effects and musics/select.mp3").toString());
+//        player = new MediaPlayer(media);
+//        player.setVolume(0.8);
+//        player.play();
     }
     @FXML public void unselectCard1(ActionEvent event){
         String id = selectedCardsImages.get(emptyCard1).getId();
@@ -401,6 +428,26 @@ public class BattleDeckController {
                 }
             }
         }
+
+
+//        try {
+//            audioInputStream = AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\unselect.wav"));
+//            clip = AudioSystem.getClip();
+//            clip.open(audioInputStream);
+//            clip.start();
+//        } catch (LineUnavailableException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (UnsupportedAudioFileException e) {
+//            e.printStackTrace();
+//        }
+
+
+//        Media media =new Media(getClass().getResource("/sound effects and musics/unselect.mp3").toString());
+//        player = new MediaPlayer(media);
+//        player.setVolume(0.8);
+//        player.play();
     }
     private void unselectIntendedCard(ImageView imageView, Button intendedCard,
                                       Button intendedEmptyCard,

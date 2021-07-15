@@ -2,6 +2,7 @@ package controller;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import sample.Player;
@@ -21,12 +24,14 @@ import java.io.File;
 import java.io.IOException;
 
 public class MainMenuController {
-
+    private String soundIn;
+    private String soundOut;
     private User currentUser;
     private AudioInputStream audioInputStream;
     private Clip clip;
     private Stage stage;
     private Parent root;
+   // private MediaPlayer player;
     @FXML private Button profileButton;
     @FXML private ImageView profPhoto;
     @FXML private ImageView profPhotoLowOpacity;
@@ -52,288 +57,110 @@ public class MainMenuController {
     @FXML private ImageView twoPhotoLowOpacity;
     @FXML private ImageView twoTag;
     public void initialize(){
+//        Media media = new Media(getClass().getResource("/sound effects and musics/menuMusic.mp3").toString());
+//        player = new MediaPlayer(media);
+//        player.setVolume(0.2);
+//        player.setCycleCount(Timeline.INDEFINITE);
+//        player.play();
+
+
+
+//        try {
+//            audioInputStream = AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\menuMusic.wav"));
+//            clip = AudioSystem.getClip();
+//            clip.open(audioInputStream);
+//            clip.start();
+//        } catch (LineUnavailableException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (UnsupportedAudioFileException e) {
+//            e.printStackTrace();
+//        }
+
+
+
+
         profPhotoLowOpacity.setOpacity(0);
         deckPhotoLowOpacity.setOpacity(0);
         historyPhotoLowOpacity.setOpacity(0);
         campPhotoLowOpacity.setOpacity(0);
         onePhotoLowOpacity.setOpacity(0);
         twoPhotoLowOpacity.setOpacity(0);
+        this.soundIn = ".\\src\\sound effects and musics\\Whoosh_Swoosh_Swing_Fencing_Sword_Fienup_006 (2).wav";
+        this.soundOut = ".\\src\\sound effects and musics\\Whoosh_Swoosh_Swing_Fencing_Sword_Fienup_015.wav";
     }
     @FXML private void resizeProfPhoto(MouseEvent event){
-        try {
-            audioInputStream =
-                    AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\Whoosh_Swoosh_Swing_Fencing_Sword_Fienup_006 (2).wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            e.printStackTrace();
-        }
-        FadeTransition ft = new FadeTransition(Duration.seconds(0.2), profPhotoLowOpacity);
-        ft.setFromValue(0);
-        ft.setToValue(0.9);
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), profPhotoLowOpacity);
-        tt.setByX(-5);
-        tt.setByY(-5);
-        ParallelTransition pt = new ParallelTransition(tt, ft);
-        pt.play();
-        profPhoto.setFitWidth(profPhoto.getFitHeight() + 3);
-        profPhoto.setFitHeight(profPhoto.getFitHeight() + 3);
-        profTag.setFitWidth(profTag.getFitHeight() + 3);
-        profTag.setFitHeight(profTag.getFitHeight() + 3);
+        changeIntendedPhotoSize(soundIn, profPhotoLowOpacity,
+                profPhoto, profTag,
+                0, 0.8,
+                -5, -5, 3);
     }
     @FXML private void shrinkProfPhoto(MouseEvent event){
-        try {
-            audioInputStream =
-                    AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\Whoosh_Swoosh_Swing_Fencing_Sword_Fienup_015.wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            e.printStackTrace();
-        }
-        FadeTransition ft = new FadeTransition(Duration.seconds(0.2), profPhotoLowOpacity);
-        ft.setFromValue(0.9);
-        ft.setToValue(0);
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), profPhotoLowOpacity);
-        tt.setByX(5);
-        tt.setByY(5);
-        ParallelTransition pt = new ParallelTransition(tt, ft);
-        pt.play();
-        profPhoto.setFitWidth(profPhoto.getFitHeight() - 3);
-        profPhoto.setFitHeight(profPhoto.getFitHeight() - 3);
-        profTag.setFitWidth(profTag.getFitHeight() - 3);
-        profTag.setFitHeight(profTag.getFitHeight() - 3);
+        changeIntendedPhotoSize(soundOut, profPhotoLowOpacity,
+                profPhoto, profTag,
+                0.8, 0,
+                5,5, -3);
     }
     @FXML private void resizeDeckPhoto(MouseEvent event){
-        try {
-            audioInputStream =
-                    AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\Whoosh_Swoosh_Swing_Fencing_Sword_Fienup_006 (2).wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            e.printStackTrace();
-        }
-        FadeTransition ft = new FadeTransition(Duration.seconds(0.2), deckPhotoLowOpacity);
-        ft.setFromValue(0);
-        ft.setToValue(0.9);
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), deckPhotoLowOpacity);
-        tt.setByX(-5);
-        tt.setByY(-5);
-        ParallelTransition pt = new ParallelTransition(tt, ft);
-        pt.play();
-        deckPhoto.setFitWidth(deckPhoto.getFitHeight() + 3);
-        deckPhoto.setFitHeight(deckPhoto.getFitHeight() + 3);
-        deckTag.setFitWidth(deckTag.getFitHeight() + 3);
-        deckTag.setFitHeight(deckTag.getFitHeight() + 3);
+        changeIntendedPhotoSize(soundIn, deckPhotoLowOpacity,
+                deckPhoto, deckTag,
+                0, 0.8,
+                -5,-5,3);
     }
     @FXML private void shrinkDeckPhoto(MouseEvent event){
-        try {
-            audioInputStream =
-                    AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\Whoosh_Swoosh_Swing_Fencing_Sword_Fienup_015.wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            e.printStackTrace();
-        }
-        FadeTransition ft = new FadeTransition(Duration.seconds(0.2), deckPhotoLowOpacity);
-        ft.setFromValue(0.9);
-        ft.setToValue(0);
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), deckPhotoLowOpacity);
-        tt.setByX(5);
-        tt.setByY(5);
-        ParallelTransition pt = new ParallelTransition(tt, ft);
-        pt.play();
-        deckPhoto.setFitWidth(deckPhoto.getFitHeight() - 3);
-        deckPhoto.setFitHeight(deckPhoto.getFitHeight() - 3);
-        deckTag.setFitWidth(deckTag.getFitHeight() - 3);
-        deckTag.setFitHeight(deckTag.getFitHeight() - 3);
+        changeIntendedPhotoSize(soundOut, deckPhotoLowOpacity,
+                deckPhoto, deckTag,
+                0.8, 0,
+                5, 5, -3);
     }
     @FXML private void resizeHistoryPhoto(MouseEvent event){
-        try {
-            audioInputStream =
-                    AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\Whoosh_Swoosh_Swing_Fencing_Sword_Fienup_006 (2).wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            e.printStackTrace();
-        }
-        FadeTransition ft = new FadeTransition(Duration.seconds(0.2), historyPhotoLowOpacity);
-        ft.setFromValue(0);
-        ft.setToValue(0.9);
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), historyPhotoLowOpacity);
-        tt.setByX(-5);
-        tt.setByY(-5);
-        ParallelTransition pt = new ParallelTransition(tt, ft);
-        pt.play();
-        historyPhoto.setFitWidth(historyPhoto.getFitHeight() + 3);
-        historyPhoto.setFitHeight(historyPhoto.getFitHeight() + 3);
-        historyTag.setFitWidth(historyTag.getFitHeight() + 3);
-        historyTag.setFitHeight(historyTag.getFitHeight() + 3);
+        changeIntendedPhotoSize(soundIn, historyPhotoLowOpacity,
+                historyPhoto, historyTag,
+                0, 0.8,
+                -5,-5, 3);
     }
     @FXML private void shrinkHistoryPhoto(MouseEvent event){
-        try {
-            audioInputStream =
-                    AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\Whoosh_Swoosh_Swing_Fencing_Sword_Fienup_015.wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            e.printStackTrace();
-        }
-        FadeTransition ft = new FadeTransition(Duration.seconds(0.2), historyPhotoLowOpacity);
-        ft.setFromValue(0.9);
-        ft.setToValue(0);
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), historyPhotoLowOpacity);
-        tt.setByX(5);
-        tt.setByY(5);
-        ParallelTransition pt = new ParallelTransition(tt, ft);
-        pt.play();
-        historyPhoto.setFitWidth(historyPhoto.getFitHeight() - 3);
-        historyPhoto.setFitHeight(historyPhoto.getFitHeight() - 3);
-        historyTag.setFitWidth(historyTag.getFitHeight() - 3);
-        historyTag.setFitHeight(historyTag.getFitHeight() - 3);
+        changeIntendedPhotoSize(soundOut, historyPhotoLowOpacity,
+                historyPhoto, historyTag,
+                0.8, 0,
+                5, 5, -3);
     }
     @FXML private void resizeCampPhoto(MouseEvent event){
-        try {
-            audioInputStream =
-                    AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\Whoosh_Swoosh_Swing_Fencing_Sword_Fienup_006 (2).wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            e.printStackTrace();
-        }
-        FadeTransition ft = new FadeTransition(Duration.seconds(0.2), campPhotoLowOpacity);
-        ft.setFromValue(0);
-        ft.setToValue(0.9);
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), campPhotoLowOpacity);
-        tt.setByX(-5);
-        tt.setByY(-5);
-        ParallelTransition pt = new ParallelTransition(tt, ft);
-        pt.play();
-        campPhoto.setFitWidth(campPhoto.getFitHeight() + 3);
-        campPhoto.setFitHeight(campPhoto.getFitHeight() + 3);
-        campTag.setFitWidth(campTag.getFitHeight() + 3);
-        campTag.setFitHeight(campTag.getFitHeight() + 3);
+        changeIntendedPhotoSize(soundIn, campPhotoLowOpacity,
+                campPhoto, campTag,
+                0, 0.8,
+                -5, -5, 3);
     }
     @FXML private void shrinkCampPhoto(MouseEvent event){
-        try {
-            audioInputStream =
-                    AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\Whoosh_Swoosh_Swing_Fencing_Sword_Fienup_015.wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            e.printStackTrace();
-        }
-        FadeTransition ft = new FadeTransition(Duration.seconds(0.2), campPhotoLowOpacity);
-        ft.setFromValue(0.9);
-        ft.setToValue(0);
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), campPhotoLowOpacity);
-        tt.setByX(5);
-        tt.setByY(5);
-        ParallelTransition pt = new ParallelTransition(tt, ft);
-        pt.play();
-        campPhoto.setFitWidth(campPhoto.getFitHeight() - 3);
-        campPhoto.setFitHeight(campPhoto.getFitHeight() - 3);
-        campTag.setFitWidth(campTag.getFitHeight() - 3);
-        campTag.setFitHeight(campTag.getFitHeight() - 3);
+        changeIntendedPhotoSize(soundOut, campPhotoLowOpacity,
+                campPhoto, campTag,
+                0.8, 0,
+                5, 5, -3);
     }
     @FXML private void resizeOnePhoto(MouseEvent event){
-        try {
-            audioInputStream =
-                    AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\Whoosh_Swoosh_Swing_Fencing_Sword_Fienup_006 (2).wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            e.printStackTrace();
-        }
-        FadeTransition ft = new FadeTransition(Duration.seconds(0.2), onePhotoLowOpacity);
-        ft.setFromValue(0);
-        ft.setToValue(0.9);
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), onePhotoLowOpacity);
-        tt.setByX(-5);
-        tt.setByY(-5);
-        ParallelTransition pt = new ParallelTransition(tt, ft);
-        pt.play();
-        onePhoto.setFitWidth(onePhoto.getFitHeight() + 3);
-        onePhoto.setFitHeight(onePhoto.getFitHeight() + 3);
-        oneTag.setFitWidth(oneTag.getFitHeight() + 3);
-        oneTag.setFitHeight(oneTag.getFitHeight() + 3);
+        changeIntendedPhotoSize(soundIn, onePhotoLowOpacity,
+                onePhoto, oneTag,
+                0, 0.8,
+                -5, -5, 3);
     }
     @FXML private void shrinkOnePhoto(MouseEvent event){
-        try {
-            audioInputStream =
-                    AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\Whoosh_Swoosh_Swing_Fencing_Sword_Fienup_015.wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            e.printStackTrace();
-        }
-        FadeTransition ft = new FadeTransition(Duration.seconds(0.2), onePhotoLowOpacity);
-        ft.setFromValue(0.9);
-        ft.setToValue(0);
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), onePhotoLowOpacity);
-        tt.setByX(5);
-        tt.setByY(5);
-        ParallelTransition pt = new ParallelTransition(tt, ft);
-        pt.play();
-        onePhoto.setFitWidth(onePhoto.getFitHeight() - 3);
-        onePhoto.setFitHeight(onePhoto.getFitHeight() - 3);
-        oneTag.setFitWidth(oneTag.getFitHeight() - 3);
-        oneTag.setFitHeight(oneTag.getFitHeight() - 3);
+        changeIntendedPhotoSize(soundOut, onePhotoLowOpacity,
+                onePhoto, oneTag,
+                0.8, 0,
+                5, 5, -3);
     }
     @FXML private void resizeTwoPhoto(MouseEvent event){
-        try {
-            audioInputStream =
-                    AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\Whoosh_Swoosh_Swing_Fencing_Sword_Fienup_006 (2).wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            e.printStackTrace();
-        }
-        FadeTransition ft = new FadeTransition(Duration.seconds(0.2), twoPhotoLowOpacity);
-        ft.setFromValue(0);
-        ft.setToValue(0.9);
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), twoPhotoLowOpacity);
-        tt.setByX(-5);
-        tt.setByY(-5);
-        ParallelTransition pt = new ParallelTransition(tt, ft);
-        pt.play();
-        twoPhoto.setFitWidth(twoPhoto.getFitHeight() + 3);
-        twoPhoto.setFitHeight(twoPhoto.getFitHeight() + 3);
-        twoTag.setFitWidth(twoTag.getFitHeight() + 3);
-        twoTag.setFitHeight(twoTag.getFitHeight() + 3);
+        changeIntendedPhotoSize(soundIn, twoPhotoLowOpacity,
+                twoPhoto, twoTag,
+                0, 0.8,
+                -5, -5, 3);
     }
     @FXML private void shrinkTwoPhoto(MouseEvent event){
-        try {
-            audioInputStream =
-                    AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\Whoosh_Swoosh_Swing_Fencing_Sword_Fienup_015.wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            e.printStackTrace();
-        }
-        FadeTransition ft = new FadeTransition(Duration.seconds(0.2), twoPhotoLowOpacity);
-        ft.setFromValue(0.9);
-        ft.setToValue(0);
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.2), twoPhotoLowOpacity);
-        tt.setByX(5);
-        tt.setByY(5);
-        ParallelTransition pt = new ParallelTransition(tt, ft);
-        pt.play();
-        twoPhoto.setFitWidth(twoPhoto.getFitHeight() - 3);
-        twoPhoto.setFitHeight(twoPhoto.getFitHeight() - 3);
-        twoTag.setFitWidth(twoTag.getFitHeight() - 3);
-        twoTag.setFitHeight(twoTag.getFitHeight() - 3);
+        changeIntendedPhotoSize(soundOut, twoPhotoLowOpacity,
+                twoPhoto, twoTag,
+                0.8, 0,
+                5, 5, -3);
     }
     @FXML public void showProfile(ActionEvent event){
         try {
@@ -385,10 +212,10 @@ public class MainMenuController {
             Player player = new Player(currentUser.getDeck(), currentUser.getLevel());
             currentUser.setPlayer(player);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TrainingCamp.fxml"));
-            stage = (Stage) trainingCampButton.getScene().getWindow();
+            stage = (Stage) battleHistoryButton.getScene().getWindow();
             root = loader.load();
-            TrainingCampController train = loader.getController();
-            train.setCurrentUser(currentUser);
+            TrainingCampController trainCon = loader.getController();
+            trainCon.setCurrentUser(currentUser);
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("training camp");
@@ -397,7 +224,31 @@ public class MainMenuController {
             e.printStackTrace();
         }
     }
-
+    private void changeIntendedPhotoSize(String soundEffectPath,
+                                         ImageView lowOpacityPhoto, ImageView photo, ImageView tag,
+                                         double lowOpacityValue, double highOpacityValue,
+                                         int byX, int byY, int sizeIncrement){
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(new File(soundEffectPath));
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+            e.printStackTrace();
+        }
+        FadeTransition ft = new FadeTransition(Duration.seconds(0.4), lowOpacityPhoto);
+        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.4), lowOpacityPhoto);
+        ft.setFromValue(lowOpacityValue);
+        ft.setToValue(highOpacityValue);
+        tt.setByY(byY);
+        tt.setByX(byX);
+        ParallelTransition pt = new ParallelTransition(ft,tt);
+        pt.play();
+        photo.setFitWidth(photo.getFitHeight() + sizeIncrement);
+        photo.setFitHeight(photo.getFitHeight() + sizeIncrement);
+        tag.setFitWidth(tag.getFitHeight() + sizeIncrement);
+        tag.setFitHeight(tag.getFitHeight() + sizeIncrement);
+    }
     public void setCurrentUser(User user) {
         this.currentUser = user;
     }

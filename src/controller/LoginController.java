@@ -30,44 +30,35 @@ public class LoginController implements Initializable {
     @FXML private Button hidePassWord;
     @FXML private Button showPassWord;
     @FXML private Label wrongPassword;
-
-
-//    private MediaPlayer player;
-
-    private AudioInputStream audioInputStream;
-    private Clip clip;
+//    private MediaPlayer mediaPlayer;
+//
+//
+//    private AudioInputStream audioInputStream;
+//    private Clip clip;
     private Stage stage;
     private Parent root;
 
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            audioInputStream = AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\LoginMusic.wav"));
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        }
 
+//        Media media = new Media(getClass().getResource("/sound effects and musics/LoginMusic.wav").toString());
+//        mediaPlayer = new MediaPlayer(media);
+//        mediaPlayer.setVolume(0.3);
+//        mediaPlayer.setCycleCount(Timeline.INDEFINITE);
+//        mediaPlayer.play();
 
-//        System.out.println(new File(".\\src\\LoginMusic.wav").exists());
-//        Media media =
-//                null;
 //        try {
-//            media = new Media(new File(".\\src\\LoginMusic.wav").toURI().toURL().toExternalForm());
-//        } catch (MalformedURLException e) {
+//            audioInputStream = AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\LoginMusic.wav"));
+//            clip = AudioSystem.getClip();
+//            clip.open(audioInputStream);
+//            clip.start();
+//        } catch (LineUnavailableException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (UnsupportedAudioFileException e) {
 //            e.printStackTrace();
 //        }
-//        player = new MediaPlayer(media);
-//        player.setCycleCount(Timeline.INDEFINITE);
-//        player.setVolume(0.3);
-//        player.play();
-
 
 
         hidePassWord.setVisible(false);
@@ -78,8 +69,8 @@ public class LoginController implements Initializable {
         loginButtonHighlighted.setDisable(true);
     }
     @FXML public void linkToSignUp(ActionEvent event) {
-//        player.stop();
-        clip.stop();
+   //     mediaPlayer.stop();
+  //      clip.stop();
         try {
             stage = (Stage) signUpLink.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../view/SignUp.fxml"));
@@ -101,8 +92,8 @@ public class LoginController implements Initializable {
                 ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
                 User savedUser = (User) objectInputStream.readObject();
                 if(user.equals(savedUser)){
-//                            player.stop();
-                    clip.stop();
+ //                   mediaPlayer.stop();
+//                    clip.stop();
                     loadMainMenu(savedUser);
                 } else {
                     wrongPassword.setText("wrong password");

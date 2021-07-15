@@ -7,6 +7,67 @@ import towers.Tower;
 
 public class DataBase {
 
+
+    public static int getUserLevel(int xp){
+        int level = 0;
+        if(xp < 300)
+            level = 2;
+        else if (xp < 300 + 500)
+            level = 3;
+        else if(xp < 300 + 500 + 900)
+            level = 4;
+        else if (xp < 300 + 500 + 900 + 1700)
+            level = 5;
+        else if (xp < 300 + 500 + 900 + 1700 + 2500)
+            level = 6;
+        return level;
+    }
+
+    public static String getEnemyPathInBattle(Tower tower){
+        String path = "";
+        if (tower instanceof KingTower)
+            path = ".\\photos\\inside game models\\red king building_00000.png";
+        else if (tower instanceof PrincessTower)
+            path = ".\\photos\\inside game models\\red queen building_00000.png";
+        return path;
+    }
+    public static String getPathInBattle(Tower tower){
+        String path = "";
+        if (tower instanceof KingTower)
+            path = ".\\photos\\inside game models\\blue king building_00000.png";
+        else if (tower instanceof PrincessTower)
+            path = ".\\photos\\inside game models\\blue queen building_00000.png";
+        return path;
+    }
+    public static String getPathInBattle(Card card){
+        String path = "";
+        if(card instanceof Arrows)
+           path = "";
+        else if (card instanceof Archer)
+            path = "";
+        else if(card instanceof BabyDragon)
+            path = "";
+        else if(card instanceof Barbarian)
+            path = "";
+        else if(card instanceof Cannon)
+            path = "";
+        else if (card instanceof FireBall)
+            path = "";
+        else if(card instanceof Giant)
+            path = "";
+        else if (card instanceof InfernoTower)
+            path = "";
+        else if (card instanceof MiniPekka)
+            path = "";
+        else if (card instanceof Rage)
+            path = "";
+        else if (card instanceof Valkyrie)
+            path = "";
+        else if(card instanceof Wizard)
+            path = "";
+        return path;
+    }
+
     public static int getHP(Tower tower, int level){
         int hp = 0;
         if(tower instanceof KingTower)

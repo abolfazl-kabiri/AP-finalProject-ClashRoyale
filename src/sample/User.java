@@ -11,7 +11,7 @@ public class User implements Serializable {
     private String username;
     private String password;
     private int level;
-    private int hp;
+    private int xp;
     private File userFile;
     private ArrayList<String> battleHistory;
     private ArrayList<Card> deck;
@@ -22,11 +22,8 @@ public class User implements Serializable {
         this.username = username;
         this.password = password;
         level = 1;
-        hp = 0;
+        xp = 0;
         battleHistory = new ArrayList<>();
-//        battleHistory.add("hello this is test");
-//        battleHistory.add("test 2");
-//        battleHistory.add("test3");
         deck = new ArrayList<>();
         userFile = new File(createFilePath());
         if(!userFile.exists())
@@ -42,12 +39,11 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return level == user.level && hp == user.hp && username.equals(user.username) && password.equals(user.password);
+        return level == user.level && xp == user.xp && username.equals(user.username) && password.equals(user.password);
     }
-
     @Override
     public int hashCode() {
-        return Objects.hash(username, password, level, hp);
+        return Objects.hash(username, password, level, xp);
     }
     public void saveUser(){
         try {

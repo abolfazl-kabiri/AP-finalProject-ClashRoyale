@@ -10,22 +10,19 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Player implements Serializable {
-    private int playerLevel;
-    private ArrayList<Card> selectedCards;
-    private ArrayList<Card> playableCards;
-    private ArrayList<Tower> towers;
-    private Card nextCard;
-    private KingTower kingTower;
-    private PrincessTower rightTower;
-    private PrincessTower leftTower;
-    private int elixir;
+    protected int playerLevel;
+    protected ArrayList<Card> selectedCards;
+    protected ArrayList<Card> playableCards;
+    protected ArrayList<Tower> towers;
+    protected Card nextCard;
+    protected KingTower kingTower = new KingTower(0,0, 275.0 , 426.0);
+    protected PrincessTower rightTower = new PrincessTower(0,0, 377.0 , 366.0);
+    protected PrincessTower leftTower = new PrincessTower(0,0, 183.0  , 366.0);
+    protected int elixir;
 
     public Player(ArrayList<Card> userCards, int level) {
         this.playerLevel = level;
         this.selectedCards = userCards;
-        kingTower = new KingTower(0,0);
-        rightTower = new PrincessTower(0,0);
-        leftTower = new PrincessTower(0,0);
         towers = new ArrayList<>();
         towers.add(kingTower);
         towers.add(rightTower);
@@ -40,7 +37,7 @@ public class Player implements Serializable {
 
     Random random = new Random();
 
-    private void fillCardsAttributes() {
+    protected void fillCardsAttributes() {
         for(Card card: selectedCards){
             if(card instanceof Soldier){
                 ((Soldier) card).setDamage(DataBase.getDamage(card, playerLevel));
@@ -54,19 +51,19 @@ public class Player implements Serializable {
                 ((Arrows) card).setDamage(DataBase.getDamage(card, playerLevel));
         }
     }
-    private void fillTowerAttributes() {
+    protected void fillTowerAttributes() {
         for(Tower tower: towers){
             tower.setDamage(DataBase.getDamage(tower, playerLevel));
             tower.setHp(DataBase.getHP(tower, playerLevel));
         }
     }
-    private Card randomNextCard() {
+    public Card randomNextCard() {
         Card card = null;
         while (playableCards.contains(card) || card == null)
             card = selectedCards.get(random.nextInt(8));
         return card;
     }
-    private void fillPlayableCards() {
+    protected void fillPlayableCards() {
         while (playableCards.size() < 4){
             Card card = selectedCards.get(random.nextInt(8));
             if(!(playableCards.contains(card)))

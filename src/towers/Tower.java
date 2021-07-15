@@ -1,8 +1,10 @@
 package towers;
 
-import java.io.Serializable;
+import sample.DataBase;
+import sample.GameElement;
 
-public abstract class Tower implements Serializable {
+
+public abstract class Tower extends GameElement {
 
     protected int hp;
     protected int damage;
@@ -10,16 +12,16 @@ public abstract class Tower implements Serializable {
     protected double range;
     protected boolean isActive;
     protected String path;
-    protected int numberOfCrowns;
 
-    public Tower(int hp, int damage, double hitSpeed, double range, boolean isActive, String path, int numberOfCrowns) {
+    public Tower(int hp, int damage, double hitSpeed, double range, boolean isActive, String path, double x, double y) {
+        super(x, y, 40, 54);
         this.hp = hp;
         this.damage = damage;
         this.hitSpeed = hitSpeed;
         this.range = range;
         this.isActive = isActive;
         this.path = path;
-        this.numberOfCrowns = numberOfCrowns;
+        this.setPathInBattle(DataBase.getPathInBattle(this));
     }
 
     public String getPath() {
@@ -46,7 +48,8 @@ public abstract class Tower implements Serializable {
     public void setActive(boolean active) {
         isActive = active;
     }
-    public int getNumberOfCrowns() {
-        return numberOfCrowns;
+
+    public void attack(){
+
     }
 }

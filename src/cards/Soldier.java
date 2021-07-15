@@ -44,4 +44,5 @@ public abstract class Soldier extends Card{
     public void setHp(int hp) {
         this.hp = hp;
     }
+
 }
