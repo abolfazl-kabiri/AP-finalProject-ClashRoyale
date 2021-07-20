@@ -91,19 +91,23 @@ public class SignUpController implements Initializable {
     }
     @FXML public void signUp(ActionEvent event) {
         String username = usernameTextField.getText();
-        File file = new File(".\\src\\users\\" + username + ".bin");
-        if(file.exists()){
-            wrongPassword.setText("this username is already taken");
+        if(username == "" || passwordField.getText() == "" || repeatPassField.getText() == ""){
+            wrongPassword.setText("fill all fields");
         } else {
-            String password = passwordField.getText();
-            String repeatedPassword = repeatPassField.getText();
-            if(password.equals(repeatedPassword)){
-                User user = new User(username,password);
-                //        player.stop();
-     //           clip.stop();
-                loadMainMenu(user);
+            File file = new File(".\\src\\users\\" + username + ".bin");
+            if(file.exists()){
+                wrongPassword.setText("this username is already taken");
             } else {
-                wrongPassword.setText("different passwords");
+                String password = passwordField.getText();
+                String repeatedPassword = repeatPassField.getText();
+                if(password.equals(repeatedPassword)){
+                    User user = new User(username,password);
+                    //        player.stop();
+                    //           clip.stop();
+                    loadMainMenu(user);
+                } else {
+                    wrongPassword.setText("different passwords");
+                }
             }
         }
     }

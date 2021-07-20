@@ -19,6 +19,9 @@
       <ProgressBar fx:id="kingHpBar" layoutX="279.0" layoutY="421.0" prefHeight="10.0" prefWidth="41.0" progress="1.0" />
       <ProgressBar fx:id="leftPrincessHpBar" layoutX="182.0" layoutY="355.0" prefHeight="10.0" prefWidth="41.0" progress="1.0" />
       <ProgressBar fx:id="rightPrincessHpBar" layoutX="376.0" layoutY="355.0" prefHeight="10.0" prefWidth="41.0" progress="1.0" />
+      <ProgressBar fx:id="enemyKingHpBar" layoutX="279.0" layoutY="15.0" prefHeight="10.0" prefWidth="41.0" progress="1.0" />
+      <ProgressBar fx:id="enemyLeftPrincessHpBar" layoutX="182.0" layoutY="70.0" prefHeight="10.0" prefWidth="41.0" progress="1.0" />
+      <ProgressBar fx:id="enemyRightPrincessHpBar" layoutX="376.0" layoutY="70.0" prefHeight="10.0" prefWidth="41.0" progress="1.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#47a0ef" height="30.0" layoutX="165.0" layoutY="235.0" stroke="BLACK" strokeType="INSIDE" width="270.0" />
       <ImageView fitHeight="50.0" fitWidth="26.0" layoutX="189.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -30,7 +33,7 @@
             <Image url="@../photos/inside%20game%20models/bridge_00000.png" />
          </image>
       </ImageView>
-      <Button fx:id="card1" layoutX="18.0" layoutY="10.0" mnemonicParsing="false" onMouseDragged="#pickCard1" style="-fx-background-color: transparent;">
+      <Button fx:id="card1" disable="true" layoutX="18.0" layoutY="10.0" mnemonicParsing="false" onMouseDragged="#pickCard1" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fx:id="onActionCard1" fitHeight="82.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -39,7 +42,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="18.0" layoutY="100.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+      <Button fx:id="card2" disable="true" layoutX="18.0" layoutY="100.0" mnemonicParsing="false" onMouseDragged="#pickCard2" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fx:id="onActionCard2" fitHeight="82.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -48,7 +51,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="18.0" layoutY="190.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+      <Button fx:id="card3" disable="true" layoutX="18.0" layoutY="190.0" mnemonicParsing="false" onMouseDragged="#pickCard3" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fx:id="onActionCard3" fitHeight="82.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -57,7 +60,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="18.0" layoutY="280.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+      <Button fx:id="card4" disable="true" layoutX="18.0" layoutY="280.0" mnemonicParsing="false" onMouseDragged="#pickCard4" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fx:id="onActionCard4" fitHeight="82.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -80,7 +83,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="timeMonitor" layoutX="473.0" layoutY="14.0" prefHeight="54.0" prefWidth="106.0" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="timeMonitor" alignment="CENTER" contentDisplay="CENTER" layoutX="473.0" layoutY="14.0" prefHeight="54.0" prefWidth="106.0" text="03:00" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Barlow Condensed SemiBold" size="40.0" />
          </font>
@@ -95,12 +98,12 @@
             <Image url="@../photos/inside%20game%20models/blue%20crown_00000.png" />
          </image>
       </ImageView>
-      <Label layoutX="519.0" layoutY="111.0" text="0" textFill="WHITE">
+      <Label fx:id="enemyCounterLabel" layoutX="519.0" layoutY="111.0" text="0" textFill="WHITE">
          <font>
             <Font name="Barlow Condensed SemiBold" size="33.0" />
          </font>
       </Label>
-      <Label layoutX="519.0" layoutY="339.0" text="0" textFill="WHITE">
+      <Label fx:id="playerCounterLabel" layoutX="519.0" layoutY="339.0" text="0" textFill="WHITE">
          <font>
             <Font name="Barlow Condensed SemiBold" size="33.0" />
          </font>
@@ -246,7 +249,7 @@
             </Label>
          </children>
       </FlowPane>
-      <Button layoutX="473.0" layoutY="456.0" mnemonicParsing="false" onAction="#openEmoteWindow" prefHeight="19.0" prefWidth="26.0" style="-fx-background-color: transparent;">
+      <Button fx:id="emoteWindowButton" disable="true" layoutX="473.0" layoutY="456.0" mnemonicParsing="false" onAction="#openEmoteWindow" prefHeight="19.0" prefWidth="26.0" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -300,5 +303,11 @@
             <Image url="@../photos/inside%20game%20models/135-1354443_clash-royale-king-png.png" />
          </image>
       </ImageView>
+      <Pane fx:id="onTopPane" opacity="0.72" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: gray;" />
+      <Label fx:id="countDownLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="280.0" layoutY="196.0" text="3" textFill="WHITE">
+         <font>
+            <Font name="Barlow Condensed SemiBold" size="83.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -8,10 +8,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import sample.DataBase;
 import sample.User;
 
 import java.io.IOException;
@@ -26,6 +28,8 @@ public class ProfileController {
     @FXML private Label levelLabel;
     @FXML private Button backButton;
     @FXML private Button backButtonHighlighted;
+    @FXML private ProgressBar xpBar;
+    @FXML private Label xpLabel;
     @FXML private ImageView selectedCard1;
     @FXML private ImageView selectedCard2;
     @FXML private ImageView selectedCard3;
@@ -78,6 +82,7 @@ public class ProfileController {
         this.currentUser = user;
         changeLabelText();
         setSelectedCards();
+        fillBar();
     }
 
     public void setSelectedCards(){
@@ -90,5 +95,12 @@ public class ProfileController {
     private void changeLabelText(){
         usernameLabel.setText(currentUser.getUsername());
         levelLabel.setText(String.valueOf(currentUser.getLevel()));
+    }
+
+    private void fillBar(){
+        int soorat = currentUser.getXp() - DataBase.requiredXPForNextLevel(currentUser.getLevel() - 1);
+        int makhraj = DataBase.requiredXPForNextLevel(currentUser.getLevel()) - DataBase.requiredXPForNextLevel(currentUser.getLevel() - 1);
+        xpBar.setProgress(Double.valueOf(soorat) / makhraj);
+        xpLabel.setText(soorat + "/" + makhraj);
     }
 }

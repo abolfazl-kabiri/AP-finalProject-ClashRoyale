@@ -30,7 +30,6 @@ public class User implements Serializable {
             saveUser();
 
     }
-
     private String createFilePath(){
         return ".\\src\\users\\" + username + ".bin";
     }
@@ -77,4 +76,17 @@ public class User implements Serializable {
     public void setPlayer(Player player) {
         this.player = player;
     }
+    public int getXp() {
+        return xp;
+    }
+    public void setXp(int xp) {
+        this.xp = xp;
+    }
+    public void setLevel(int level){
+        this.level = level;
+    }
+    public void addToHistory(String history){
+        battleHistory.add(history);
+    }
+
 }

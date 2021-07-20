@@ -10,17 +10,19 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Player implements Serializable {
+    transient protected int numberOfStars;
     protected int playerLevel;
     protected ArrayList<Card> selectedCards;
     protected ArrayList<Card> playableCards;
     protected ArrayList<Tower> towers;
     protected Card nextCard;
-    protected KingTower kingTower = new KingTower(0,0, 275.0 , 426.0);
+    protected KingTower kingTower = new KingTower(0,0, 275.0, 426.0);
     protected PrincessTower rightTower = new PrincessTower(0,0, 377.0 , 366.0);
-    protected PrincessTower leftTower = new PrincessTower(0,0, 183.0  , 366.0);
-    protected int elixir;
+    protected PrincessTower leftTower = new PrincessTower(0,0, 183.0 , 366.0);
+    protected double elixir;
 
     public Player(ArrayList<Card> userCards, int level) {
+        numberOfStars = 0;
         this.playerLevel = level;
         this.selectedCards = userCards;
         towers = new ArrayList<>();
@@ -30,7 +32,7 @@ public class Player implements Serializable {
         playableCards = new ArrayList<>();
         fillPlayableCards();
         nextCard = randomNextCard();
-        elixir = 4;
+        elixir = .4;
         fillTowerAttributes();
         fillCardsAttributes();
     }
@@ -40,15 +42,15 @@ public class Player implements Serializable {
     protected void fillCardsAttributes() {
         for(Card card: selectedCards){
             if(card instanceof Soldier){
-                ((Soldier) card).setDamage(DataBase.getDamage(card, playerLevel));
-                ((Soldier) card).setHp(DataBase.getHP(card, playerLevel) );
+                card.setDamage(DataBase.getDamage(card, playerLevel));
+                card.setHp(DataBase.getHP(card, playerLevel) );
             } else if (card instanceof Building){
-                ((Building) card).setDamage(DataBase.getDamage(card, playerLevel));
-                ((Building) card).setHp(DataBase.getHP(card, playerLevel) );
+                card.setDamage(DataBase.getDamage(card, playerLevel));
+                card.setHp(DataBase.getHP(card, playerLevel) );
             } else if (card instanceof FireBall)
-                ((FireBall) card).setDamage(DataBase.getDamage(card, playerLevel));
+                card.setDamage(DataBase.getDamage(card, playerLevel));
             else if (card instanceof Arrows)
-                ((Arrows) card).setDamage(DataBase.getDamage(card, playerLevel));
+                card.setDamage(DataBase.getDamage(card, playerLevel));
         }
     }
     protected void fillTowerAttributes() {
@@ -70,16 +72,19 @@ public class Player implements Serializable {
                 playableCards.add(card);
         }
     }
-    public int getElixir() {
-        return elixir;
-    }
-    public void setElixir(int elixir) {
+
+    public void setElixir(double elixir) {
         this.elixir = elixir;
     }
-
-    public ArrayList<Card> getSelectedCards() {
-        return selectedCards;
+    public double getElixir() {
+        return elixir;
     }
+    public void updateElixir() {
+        this.elixir += .1;
+        if(this.elixir >= 1)
+            this.elixir = 1.0;
+    }
+
     public ArrayList<Card> getPlayableCards() {
         return playableCards;
     }
@@ -95,6 +100,19 @@ public class Player implements Serializable {
     public PrincessTower getLeftTower() {
         return leftTower;
     }
-
-
+    public int getPlayerLevel() {
+        return playerLevel;
+    }
+    public Card updatePlayableCards(Card card){
+        playableCards.remove(card);
+        playableCards.add(nextCard);
+        nextCard = randomNextCard();
+        return nextCard;
+    }
+    public int getNumberOfStars() {
+        return numberOfStars;
+    }
+    public void setNumberOfStars(int numberOfStars) {
+        this.numberOfStars = numberOfStars;
+    }
 }

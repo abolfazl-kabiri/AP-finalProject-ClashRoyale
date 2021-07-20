@@ -41,8 +41,8 @@ public class LoginController implements Initializable {
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
 
-//        Media media = new Media(getClass().getResource("/sound effects and musics/LoginMusic.wav").toString());
-//        mediaPlayer = new MediaPlayer(media);
+//         Media media = new Media(getClass().getResource("/sound effects and musics/LoginMusic.wav").toString());
+//         mediaPlayer = new MediaPlayer(media);
 //        mediaPlayer.setVolume(0.3);
 //        mediaPlayer.setCycleCount(Timeline.INDEFINITE);
 //        mediaPlayer.play();
@@ -84,32 +84,36 @@ public class LoginController implements Initializable {
     }
     @FXML public void login(ActionEvent event) {
         String username = usernameTextField.getText();
-        if(new File(  ".\\src\\users\\" + username + ".bin").exists()){
-            String password = passwordField.getText();
-            User user = new User(username,password);
-            try {
-                FileInputStream fileInputStream = new FileInputStream(".\\src\\users\\" + username + ".bin");
-                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-                User savedUser = (User) objectInputStream.readObject();
-                if(user.equals(savedUser)){
- //                   mediaPlayer.stop();
-//                    clip.stop();
-                    loadMainMenu(savedUser);
-                } else {
-                    wrongPassword.setText("wrong password");
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
 
+        if(username == "" || passwordField.getText() == ""){
+            wrongPassword.setText("fill all fields");
         } else {
-            wrongPassword.setText("you have not signed up before");
-        }
+            if(new File(  ".\\src\\users\\" + username + ".bin").exists()){
+                String password = passwordField.getText();
+                User user = new User(username,password);
+                try {
+                    FileInputStream fileInputStream = new FileInputStream(".\\src\\users\\" + username + ".bin");
+                    ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+                    User savedUser = (User) objectInputStream.readObject();
+                    if(user.equals(savedUser)){
+                        //                   mediaPlayer.stop();
+//                    clip.stop();
+                        loadMainMenu(savedUser);
+                    } else {
+                        wrongPassword.setText("wrong password");
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
 
+            } else {
+                wrongPassword.setText("you have not signed up before");
+            }
+        }
     }
     private void loadMainMenu(User user){
         try {

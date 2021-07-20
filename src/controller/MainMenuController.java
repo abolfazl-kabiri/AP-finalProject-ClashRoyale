@@ -212,7 +212,7 @@ public class MainMenuController {
             Player player = new Player(currentUser.getDeck(), currentUser.getLevel());
             currentUser.setPlayer(player);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TrainingCamp.fxml"));
-            stage = (Stage) battleHistoryButton.getScene().getWindow();
+            stage = (Stage) trainingCampButton.getScene().getWindow();
             root = loader.load();
             TrainingCampController trainCon = loader.getController();
             trainCon.setCurrentUser(currentUser);

@@ -181,7 +181,7 @@ public class BattleDeckController {
 
         Button temp = findFirstDisableEmptyCard();
         if (temp != null){
-            Card card = new Rage();
+            Card card = new Rage(0);
             moveImageViewToIntendedEmptyCard(ragePhoto, card, rageCard, temp);
         }
     }
@@ -475,7 +475,6 @@ public class BattleDeckController {
         this.currentUser = user;
         userCards = user.getDeck();
         selectedCards = userCards;
-        System.out.println(userCards);
         loadSelectedCards();
     }
     public void loadSelectedCards(){

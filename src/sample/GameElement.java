@@ -28,25 +28,38 @@ public class GameElement implements Serializable {
         imageView = new ImageView();
         Image image = new Image(pathInBattle, (double)width, (double)height, false,false);
         imageView.setImage(image);
-        imageView.setX(x);
-        imageView.setY(y);
+        imageView.setLayoutX(x);
+        imageView.setLayoutY(y);
+        pane.getChildren().add(imageView);
+    }
+
+    public void createPicture(Pane pane, double x, double y){
+        this.x  = x;
+        this.y = y;
+        imageView = new ImageView();
+        Image image = new Image(pathInBattle, (double)width, (double)height, false,false);
+        imageView.setImage(image);
+        imageView.setLayoutX(x);
+        imageView.setLayoutY(y);
         pane.getChildren().add(imageView);
     }
 
     public double getX() {
         return x;
     }
-
     public void setX(double x) {
         this.x = x;
+        imageView.setLayoutX(this.x);
     }
-
     public double getY() {
         return y;
     }
-
     public void setY(double y) {
         this.y = y;
+        imageView.setLayoutY(this.y);
+    }
+    public ImageView getImageView() {
+        return imageView;
     }
 
     public String getPathInBattle() {
