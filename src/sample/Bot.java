@@ -10,18 +10,36 @@ import towers.Tower;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * The type Bot.
+ */
 public class Bot extends Player{
-
+    /**
+     * The Pane.
+     */
+    protected Pane pane;
     private final double [] xLocs = {184.0 , 377.0};
-    private final double [] yLocs = {125.0 , 150.0, 175.0, 200.0};
-    private Card lastCard;
+    /**
+     * The Y locs.
+     */
+    protected final double [] yLocs = {125.0 , 150.0, 175.0, 200.0};
+    /**
+     * The Last card.
+     */
+    protected Card lastCard;
 
+    /**
+     * Instantiates a new Bot.
+     *
+     * @param userCards the user cards
+     * @param level     the level
+     */
     public Bot(ArrayList<Card> userCards, int level) {
         super(userCards, level);
         this.selectedCards = null;
         this.kingTower = new KingTower(DataBase.getHP(kingTower, level),DataBase.getDamage(kingTower, level), 275.0, 21.0);
         this.leftTower = new PrincessTower(DataBase.getHP(leftTower, level),DataBase.getDamage(leftTower, level), 183.0, 81.0);
-        this.rightTower = new PrincessTower(DataBase.getHP(rightTower, level),DataBase.getDamage(leftTower, level), 377.0, 81.0);
+        this.rightTower = new PrincessTower(DataBase.getHP(rightTower, level),DataBase.getDamage(rightTower, level), 377.0, 81.0);
         generateCards();
         fillCardsAttributes();
         fillTowerAttributes();
@@ -31,16 +49,32 @@ public class Bot extends Player{
         this.elixir = 1.0;
     }
 
-
+    /**
+     * The Random.
+     */
     Random random = new Random();
+
+    /**
+     * Play card.
+     *
+     * @param pane the pane
+     */
     public void playCard(Pane pane){
+        this.pane = pane;
         Card selectedCard = null;
         while (selectedCard == null || selectedCard instanceof Rage || selectedCard == lastCard)
             selectedCard = selectedCards.get(random.nextInt(selectedCards.size()));
         lastCard = selectedCard;
-        handleMove(selectedCard, pane);
+        handleMove(selectedCard);
     }
-    private Card getCardInstance(Card card){
+
+    /**
+     * Get card instance card.
+     *
+     * @param card the card
+     * @return the card
+     */
+    public Card getCardInstance(Card card){
         if (card instanceof Archer)
             return new Archer(card.getDamage(), card.getHp());
         else if (card instanceof Arrows)
@@ -68,7 +102,11 @@ public class Bot extends Player{
         else
             return null;
     }
-    private void generateCards(){
+
+    /**
+     * Generate cards.
+     */
+    public void generateCards(){
         ArrayList<Card> copy = new ArrayList<>();
         Arrows arrows = new Arrows(0);
         Archer archer = new Archer(0,0);
@@ -96,7 +134,13 @@ public class Bot extends Player{
         copy.add(wizard);
         this.selectedCards = copy;
     }
-    private void handleMove(Card card, Pane pane){
+
+    /**
+     * Handle move.
+     *
+     * @param card the card
+     */
+    public void handleMove(Card card){
         card = getCardInstance(card);
         if (card instanceof Soldier){
             int i = 0;
@@ -107,7 +151,7 @@ public class Bot extends Player{
                 card.setPathInBattle(DataBase.getPathInBattle(card, true));
                 int way = random.nextInt(2);
                 card.createPicture(pane, xLocs[way], yLocs[i]);
-                card.startFunctioning();
+                card.startFunctioning(pane);
                 TrainingCampController.enemyInGameCards.add(card);
                 count--;
                 i++;
@@ -126,8 +170,14 @@ public class Bot extends Player{
 
 
         TrainingCampController.enemyInGameCards.add(card);
-        card.startFunctioning();
+        card.startFunctioning(pane);
     }
+
+    /**
+     * Get name string.
+     *
+     * @return the string
+     */
     public String getName(){
         return "simple bot";
     }

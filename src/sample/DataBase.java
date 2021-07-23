@@ -1,27 +1,47 @@
 package sample;
 
 import cards.*;
+import javafx.scene.media.Media;
 import towers.KingTower;
 import towers.PrincessTower;
 import towers.Tower;
 
+import java.io.File;
+import java.nio.file.Paths;
+
+/**
+ * The type Data base.
+ */
 public class DataBase {
 
 
+    /**
+     * Get user level int.
+     *
+     * @param xp the xp
+     * @return the int
+     */
     public static int getUserLevel(int xp){
         int level = 0;
         if(xp < 300)
-            level = 2;
+            level = 1;
         else if (xp < 300 + 500)
-            level = 3;
+            level = 2;
         else if(xp < 300 + 500 + 900)
-            level = 4;
+            level = 3;
         else if (xp < 300 + 500 + 900 + 1700)
-            level = 5;
+            level = 4;
         else if (xp < 300 + 500 + 900 + 1700 + 2500)
-            level = 6;
+            level = 5;
         return level;
     }
+
+    /**
+     * Required xp for next level int.
+     *
+     * @param level the level
+     * @return the int
+     */
     public static int requiredXPForNextLevel(int level){
         if (level == 0)
             return 0;
@@ -37,6 +57,12 @@ public class DataBase {
             return 300 + 500 + 900 + 1700 + 2500;
     }
 
+    /**
+     * Get enemy path in battle string.
+     *
+     * @param tower the tower
+     * @return the string
+     */
     public static String getEnemyPathInBattle(Tower tower){
         String path = "";
         if (tower instanceof KingTower)
@@ -45,6 +71,13 @@ public class DataBase {
             path = ".\\photos\\inside game models\\red queen building_00000.png";
         return path;
     }
+
+    /**
+     * Get path in battle string.
+     *
+     * @param tower the tower
+     * @return the string
+     */
     public static String getPathInBattle(Tower tower){
         String path = "";
         if (tower instanceof KingTower)
@@ -53,118 +86,14 @@ public class DataBase {
             path = ".\\photos\\inside game models\\blue queen building_00000.png";
         return path;
     }
-    public static String getPathInBattlePlayer(Card card){
-        String path = "";
-        if(card instanceof Arrows)
-            path = ".\\photos\\icon.jpg";
-        else if (card instanceof Archer)
-            path = ".\\photos\\inBattleGifs\\archer\\blue archer\\blue-archer-back-walk.gif";
-        else if(card instanceof BabyDragon)
-            path = ".\\photos\\inBattleGifs\\baby dragon\\blue baby dragon\\blue-baby-dragon-back-fly.gif";
-        else if(card instanceof Barbarian)
-            path = ".\\photos\\inBattleGifs\\barbarian\\blue barbarian\\blue-barbarian-back-walk.gif";
-        else if(card instanceof Cannon)
-            path = ".\\photos\\inBattle\\cannon.png";
-        else if (card instanceof FireBall)
-            path = ".\\photos\\inBattle\\fireball.png";
-        else if(card instanceof Giant)
-            path = ".\\photos\\inBattleGifs\\giant\\blue giant\\blue-giant-back-walk.gif";
-        else if (card instanceof InfernoTower)
-            path = ".\\photos\\inBattleGifs\\inferno\\building_inferno_tower_sprite_2.png";
-        else if (card instanceof MiniPekka)
-            path = ".\\photos\\inBattleGifs\\mini pekka\\blue mini pekka\\blue-mini-pekka-back-walk.gif";
-        else if (card instanceof Rage)
-            path = ".\\photos\\inBattleGifs\\purple circle.png";
-        else if (card instanceof Valkyrie)
-            path = ".\\photos\\inBattleGifs\\valkyrie\\blue valkyrie\\blue-valkyrie-back-walk.gif";
-        else if(card instanceof Wizard)
-            path = ".\\photos\\inBattleGifs\\wizard\\blue wizard\\blue-wizard-back-walk.gif";
-        return path;
-    }
-    public static String getPathInBattleBot(Card card){
-        String path = "";
-        if(card instanceof Arrows)
-            path = ".\\photos\\icon.jpg";
-        else if (card instanceof Archer)
-            path = ".\\photos\\inBattleGifs\\archer\\red archer\\red-archer-front-walk.gif";
-        else if(card instanceof BabyDragon)
-            path = ".\\photos\\inBattleGifs\\baby dragon\\red baby dragon\\red-baby-dragon-front-fly.gif";
-        else if(card instanceof Barbarian)
-            path = ".\\photos\\inBattleGifs\\barbarian\\red barbarian\\red-barbarian-front-walk.gif";
-        else if(card instanceof Cannon)
-            path = ".\\photos\\inBattle\\cannon.png";
-        else if (card instanceof FireBall)
-            path = ".\\photos\\inBattle\\fireball.png";
-        else if(card instanceof Giant)
-            path = ".\\photos\\inBattleGifs\\giant\\red giant\\red-giant-front-walk.gif";
-        else if (card instanceof InfernoTower)
-            path = ".\\photos\\inBattleGifs\\inferno\\building_inferno_tower_sprite_0.png";
-        else if (card instanceof MiniPekka)
-            path = ".\\photos\\inBattleGifs\\mini pekka\\red mini pekka\\red-mini-pekka-front-walk.gif";
-        else if (card instanceof Rage)
-            path = ".\\photos\\inBattleGifs\\purple circle.png";
-        else if (card instanceof Valkyrie)
-            path = ".\\photos\\inBattleGifs\\valkyrie\\red valkyrie\\red-valkyrie-front-walk.gif";
-        else if(card instanceof Wizard)
-            path = ".\\photos\\inBattleGifs\\wizard\\red wizard\\red-wizard-front-walk.gif";
-        return path;
-    }
-    public static String getDamagingPathPlayer(Card card){
-        String path = "";
-        if(card instanceof Arrows)
-            path = ".\\photos\\icon.jpg";
-        else if (card instanceof Archer)
-            path = ".\\photos\\inBattleGifs\\archer\\blue archer\\blue-archer-back-hit.gif";
-        else if(card instanceof BabyDragon)
-            path = ".\\photos\\inBattleGifs\\baby dragon\\blue baby dragon\\blue-baby-dragon-back-hit.gif";
-        else if(card instanceof Barbarian)
-            path = ".\\photos\\inBattleGifs\\barbarian\\blue barbarian\\blue-barbarian-back-hit.gif";
-        else if(card instanceof Cannon)
-            path = ".\\photos\\inBattle\\cannon.png";
-        else if (card instanceof FireBall)
-            path = ".\\photos\\inBattle\\fireball.png";
-        else if(card instanceof Giant)
-            path = ".\\photos\\inBattleGifs\\giant\\blue giant\\blue-giant-back-hit.gif";
-        else if (card instanceof InfernoTower)
-            path = ".\\photos\\inBattleGifs\\inferno\\building_inferno_tower_sprite_2.png";
-        else if (card instanceof MiniPekka)
-            path = ".\\photos\\inBattleGifs\\mini pekka\\blue mini pekka\\blue-mini-pekka-back-hit.gif";
-        else if (card instanceof Rage)
-            path = ".\\photos\\inBattleGifs\\purple circle.png";
-        else if (card instanceof Valkyrie)
-            path = ".\\photos\\inBattleGifs\\valkyrie\\blue valkyrie\\blue-valkyrie-back-hit.gif";
-        else if(card instanceof Wizard)
-            path = ".\\photos\\inBattleGifs\\wizard\\blue wizard\\blue-wizard-back-hit.gif";
-        return path;
-    }
-    public static String getDamagePathBot(Card card){
-        String path = "";
-        if(card instanceof Arrows)
-            path = ".\\photos\\icon.jpg";
-        else if (card instanceof Archer)
-            path = ".\\photos\\inBattleGifs\\archer\\red archer\\red-archer-front-hit.gif";
-        else if(card instanceof BabyDragon)
-            path = ".\\photos\\inBattleGifs\\baby dragon\\red baby dragon\\red-baby-dragon-front-hit.gif";
-        else if(card instanceof Barbarian)
-            path = ".\\photos\\inBattleGifs\\barbarian\\red barbarian\\red-barbarian-front-hit.gif";
-        else if(card instanceof Cannon)
-            path = ".\\photos\\inBattle\\cannon.png";
-        else if (card instanceof FireBall)
-            path = ".\\photos\\inBattle\\fireball.png";
-        else if(card instanceof Giant)
-            path = ".\\photos\\inBattleGifs\\giant\\red giant\\red-giant-front-hit.gif";
-        else if (card instanceof InfernoTower)
-            path = ".\\photos\\inBattleGifs\\inferno\\building_inferno_tower_sprite_0.png";
-        else if (card instanceof MiniPekka)
-            path = ".\\photos\\inBattleGifs\\mini pekka\\red mini pekka\\red-mini-pekka-front-hit.gif";
-        else if (card instanceof Rage)
-            path = ".\\photos\\inBattleGifs\\purple circle.png";
-        else if (card instanceof Valkyrie)
-            path = ".\\photos\\inBattleGifs\\valkyrie\\red valkyrie\\red-valkyrie-front-hit.gif";
-        else if(card instanceof Wizard)
-            path = ".\\photos\\inBattleGifs\\wizard\\red wizard\\red-wizard-front-hit.gif";
-        return path;
-    }
+
+    /**
+     * Get path in battle string.
+     *
+     * @param card  the card
+     * @param isBot the is bot
+     * @return the string
+     */
     public static String getPathInBattle(Card card, boolean isBot){
         if (isBot)
             return getPathInBattleBot(card);
@@ -172,6 +101,169 @@ public class DataBase {
             return getPathInBattlePlayer(card);
     }
 
+    /**
+     * Get path in battle player string.
+     *
+     * @param card the card
+     * @return the string
+     */
+    public static String getPathInBattlePlayer(Card card){
+        String path = "";
+        if(card instanceof Arrows)
+            path = ".\\photos\\icon.jpg";
+        else if (card instanceof Archer)
+            path = ".\\photos\\inBattleGifs\\archer\\blue archer\\babw.gif";
+        else if(card instanceof BabyDragon)
+            path = ".\\photos\\inBattleGifs\\baby dragon\\blue baby dragon\\bbdbf.gif";
+        else if(card instanceof Barbarian)
+            path = ".\\photos\\inBattleGifs\\barbarian\\blue barbarian\\bbbw.gif";
+        else if(card instanceof Cannon)
+            path = ".\\photos\\inBattle\\cannon.png";
+        else if (card instanceof FireBall)
+            path = ".\\photos\\inBattle\\fireball.png";
+        else if(card instanceof Giant)
+            path = ".\\photos\\inBattleGifs\\giant\\blue giant\\bgbw.gif";
+        else if (card instanceof InfernoTower)
+            path = ".\\photos\\inBattleGifs\\inferno\\bit_00000.png";
+        else if (card instanceof MiniPekka)
+            path = ".\\photos\\inBattleGifs\\mini pekka\\blue mini pekka\\bmpbw.gif";
+        else if (card instanceof Rage)
+            path = ".\\photos\\inBattleGifs\\purple circle.png";
+        else if (card instanceof Valkyrie)
+            path = ".\\photos\\inBattleGifs\\valkyrie\\blue valkyrie\\bvbw.gif";
+        else if(card instanceof Wizard)
+            path = ".\\photos\\inBattleGifs\\wizard\\blue wizard\\bwbw.gif";
+        return path;
+    }
+
+    /**
+     * Get path in battle bot string.
+     *
+     * @param card the card
+     * @return the string
+     */
+    public static String getPathInBattleBot(Card card){
+        String path = "";
+        if(card instanceof Arrows)
+            path = ".\\photos\\icon.jpg";
+        else if (card instanceof Archer)
+            path = ".\\photos\\inBattleGifs\\archer\\red archer\\rafw.gif";
+        else if(card instanceof BabyDragon)
+            path = ".\\photos\\inBattleGifs\\baby dragon\\red baby dragon\\rbdff.gif";
+        else if(card instanceof Barbarian)
+            path = ".\\photos\\inBattleGifs\\barbarian\\red barbarian\\rbfw.gif";
+        else if(card instanceof Cannon)
+            path = ".\\photos\\inBattle\\cannon.png";
+        else if (card instanceof FireBall)
+            path = ".\\photos\\inBattle\\fireball.png";
+        else if(card instanceof Giant)
+            path = ".\\photos\\inBattleGifs\\giant\\red giant\\rgfw.gif";
+        else if (card instanceof InfernoTower)
+            path = ".\\photos\\inBattleGifs\\inferno\\rit_00000.png";
+        else if (card instanceof MiniPekka)
+            path = ".\\photos\\inBattleGifs\\mini pekka\\red mini pekka\\rmpfw.gif";
+        else if (card instanceof Rage)
+            path = ".\\photos\\inBattleGifs\\purple circle.png";
+        else if (card instanceof Valkyrie)
+            path = ".\\photos\\inBattleGifs\\valkyrie\\red valkyrie\\rvfw.gif";
+        else if(card instanceof Wizard)
+            path = ".\\photos\\inBattleGifs\\wizard\\red wizard\\rwfw.gif";
+        return path;
+    }
+
+
+    /**
+     * Get damage path string.
+     *
+     * @param card  the card
+     * @param isBot the is bot
+     * @return the string
+     */
+    public static String getDamagePath(Card card, boolean isBot){
+        if (isBot)
+            return getDamagePathBot(card);
+        else
+            return getDamagingPathPlayer(card);
+    }
+
+    /**
+     * Get damaging path player string.
+     *
+     * @param card the card
+     * @return the string
+     */
+    public static String getDamagingPathPlayer(Card card){
+        String path = "";
+        if(card instanceof Arrows)
+            path = ".\\photos\\icon.jpg";
+        else if (card instanceof Archer)
+            path = ".\\photos\\inBattleGifs\\archer\\blue archer\\babh.gif";
+        else if(card instanceof BabyDragon)
+            path = ".\\photos\\inBattleGifs\\baby dragon\\blue baby dragon\\bbdbh.gif";
+        else if(card instanceof Barbarian)
+            path = ".\\photos\\inBattleGifs\\barbarian\\blue barbarian\\bbbh.gif";
+        else if(card instanceof Cannon)
+            path = ".\\photos\\inBattleGifs\\cannon\\blue cannon_00000.png";
+        else if (card instanceof FireBall)
+            path = ".\\photos\\inBattle\\fireball.png";
+        else if(card instanceof Giant)
+            path = ".\\photos\\inBattleGifs\\giant\\blue giant\\bgbh.gif";
+        else if (card instanceof InfernoTower)
+            path = ".\\photos\\inBattleGifs\\inferno\\bit_00000.png";
+        else if (card instanceof MiniPekka)
+            path = ".\\photos\\inBattleGifs\\mini pekka\\blue mini pekka\\bmpbh.gif";
+        else if (card instanceof Rage)
+            path = ".\\photos\\inBattleGifs\\purple circle.png";
+        else if (card instanceof Valkyrie)
+            path = ".\\photos\\inBattleGifs\\valkyrie\\blue valkyrie\\bvbh.gif";
+        else if(card instanceof Wizard)
+            path = ".\\photos\\inBattleGifs\\wizard\\blue wizard\\bwbh.gif";
+        return path;
+    }
+
+    /**
+     * Get damage path bot string.
+     *
+     * @param card the card
+     * @return the string
+     */
+    public static String getDamagePathBot(Card card){
+        String path = "";
+        if(card instanceof Arrows)
+            path = ".\\photos\\icon.jpg";
+        else if (card instanceof Archer)
+            path = ".\\photos\\inBattleGifs\\archer\\red archer\\rafh.gif";
+        else if(card instanceof BabyDragon)
+            path = ".\\photos\\inBattleGifs\\baby dragon\\red baby dragon\\rbdfh.gif";
+        else if(card instanceof Barbarian)
+            path = ".\\photos\\inBattleGifs\\barbarian\\red barbarian\\rbfh.gif";
+        else if(card instanceof Cannon)
+            path = ".\\photos\\inBattleGifs\\cannon\\red cannon_00000.png";
+        else if (card instanceof FireBall)
+            path = ".\\photos\\inBattle\\fireball.png";
+        else if(card instanceof Giant)
+            path = ".\\photos\\inBattleGifs\\giant\\red giant\\rgfh.gif";
+        else if (card instanceof InfernoTower)
+            path = ".\\photos\\inBattleGifs\\inferno\\bit_00000.png";
+        else if (card instanceof MiniPekka)
+            path = ".\\photos\\inBattleGifs\\mini pekka\\red mini pekka\\rmpfh.gif";
+        else if (card instanceof Rage)
+            path = ".\\photos\\inBattleGifs\\purple circle.png";
+        else if (card instanceof Valkyrie)
+            path = ".\\photos\\inBattleGifs\\valkyrie\\red valkyrie\\rvfh.gif";
+        else if(card instanceof Wizard)
+            path = ".\\photos\\inBattleGifs\\wizard\\red wizard\\rwfh.gif";
+        return path;
+    }
+
+
+    /**
+     * Get hp int.
+     *
+     * @param tower the tower
+     * @param level the level
+     * @return the int
+     */
     public static int getHP(Tower tower, int level){
         int hp = 0;
         if(tower instanceof KingTower)
@@ -210,6 +302,13 @@ public class DataBase {
     }
 
 
+    /**
+     * Get damage int.
+     *
+     * @param tower the tower
+     * @param level the level
+     * @return the int
+     */
     public static int getDamage(Tower tower, int level){
         int damage = 0;
         if(tower instanceof KingTower)
@@ -248,6 +347,13 @@ public class DataBase {
     }
 
 
+    /**
+     * Get damage int.
+     *
+     * @param card  the card
+     * @param level the level
+     * @return the int
+     */
     public static int getDamage(Card card, int level){
         int damage = 0;
         if(card instanceof Barbarian)
@@ -431,6 +537,13 @@ public class DataBase {
     }
 
 
+    /**
+     * Get hp int.
+     *
+     * @param card  the card
+     * @param level the level
+     * @return the int
+     */
     public static int getHP(Card card, int level){
         int hp = 0;
         if(card instanceof Barbarian)
@@ -581,6 +694,12 @@ public class DataBase {
         }
     }
 
+    /**
+     * Get rage duration double.
+     *
+     * @param level the level
+     * @return the double
+     */
     public static double getRageDuration(int level){
         switch (level){
             case 1:
@@ -596,7 +715,12 @@ public class DataBase {
         }
     }
 
-
+    /**
+     * Get inferno dps int.
+     *
+     * @param level the level
+     * @return the int
+     */
     public static int getInfernoDPS(int level){
         switch (level){
             case 1:
@@ -611,6 +735,14 @@ public class DataBase {
                 return 14;
         }
     }
+
+    /**
+     * Is target valid boolean.
+     *
+     * @param enemyCard    the enemy card
+     * @param intendedCard the intended card
+     * @return the boolean
+     */
     public static boolean isTargetValid(Card enemyCard, Soldier intendedCard){
         if (intendedCard.getTarget().equals(Target.GROUND)){
             if (enemyCard instanceof BabyDragon || enemyCard instanceof Spell)
@@ -626,5 +758,85 @@ public class DataBase {
             return enemyCard instanceof Building;
         }
         return false;
+    }
+
+    /**
+     * Is target valid boolean.
+     *
+     * @param enemyCard    the enemy card
+     * @param intendedCard the intended card
+     * @return the boolean
+     */
+    public static boolean isTargetValid(Card enemyCard, Building intendedCard){
+        if (intendedCard.getTarget().equals(Target.AIRandGROUND)){
+            if (enemyCard instanceof Spell)
+                return false;
+            return true;
+        } else if (intendedCard.getTarget().equals(Target.GROUND)){
+            if (enemyCard instanceof BabyDragon || enemyCard instanceof Spell)
+                return false;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Get walk sound effect string.
+     *
+     * @param card the card
+     * @return the string
+     */
+    public static String getWalkSoundEffect(Card card){
+        if (card instanceof Archer)
+            return "/sound effects and musics/in battle sound effects/archer/archer_step_06.mp3";
+        else if (card instanceof BabyDragon)
+            return "/sound effects and musics/in battle sound effects/baby dragon/babydragon_wing_01.mp3";
+        else if (card instanceof Barbarian)
+            return "/sound effects and musics/in battle sound effects/barbarian/barb_footstep_03_no_vo.mp3";
+        else if (card instanceof Giant)
+            return "/sound effects and musics/in battle sound effects/giant/demon_step_01.mp3";
+        else if (card instanceof MiniPekka)
+            return "/sound effects and musics/in battle sound effects/mini pekka/minipekka_step_03.mp3";
+        else if (card instanceof Valkyrie)
+            return "/sound effects and musics/in battle sound effects/valkyrie/valk_step_02.mp3";
+        else if (card instanceof Wizard)
+            return "/sound effects and musics/in battle sound effects/wizard/wiz_steps_01v2.mp3";
+        else
+            return null;
+    }
+
+    /**
+     * Get hit sound effect string.
+     *
+     * @param card the card
+     * @return the string
+     */
+    public static String getHitSoundEffect(Card card){
+        if (card instanceof Archer)
+            return "/sound effects and musics/in battle sound effects/archer/archer_attack_07.mp3";
+        else if (card instanceof Arrows)
+            return "/sound effects and musics/in battle sound effects/arrows/arrow_hit_13.mp3";
+        else if (card instanceof BabyDragon)
+            return "/sound effects and musics/in battle sound effects/baby dragon/baby_dragon_fireball_08.mp3";
+        else if (card instanceof Barbarian)
+            return "/sound effects and musics/in battle sound effects/barbarian/barbarian_attack_04.mp3";
+        else if (card instanceof Cannon)
+            return "/sound effects and musics/in battle sound effects/cannon/cannon_fire_03.mp3";
+        else if (card instanceof FireBall)
+            return "/sound effects and musics/in battle sound effects/fireball/fireball_hit_01.mp3";
+        else if (card instanceof Giant)
+            return "/sound effects and musics/in battle sound effects/giant/giant_hit_01.mp3";
+        else if (card instanceof InfernoTower)
+            return "/sound effects and musics/in battle sound effects/inferno/laser_loop_02.mp3";
+        else if (card instanceof MiniPekka)
+            return "/sound effects and musics/in battle sound effects/mini pekka/mini_pekka_atk_12.mp3";
+        else if (card instanceof Rage)
+            return "/sound effects and musics/in battle sound effects/rage/rage_spell_01.mp3";
+        else if (card instanceof Valkyrie)
+            return "/sound effects and musics/in battle sound effects/valkyrie/valkyrie_atk_04.mp3";
+        else if (card instanceof Wizard)
+            return "/sound effects and musics/in battle sound effects/wizard/wiz_atk_vo_01.mp3";
+        else
+            return null;
     }
 }
