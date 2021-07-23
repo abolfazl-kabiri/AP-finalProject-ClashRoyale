@@ -1,6 +1,8 @@
 package cards;
 
 import controller.TrainingCampController;
+import javafx.application.Platform;
+import javafx.scene.layout.Pane;
 import sample.GameElement;
 import towers.Tower;
 
@@ -8,9 +10,28 @@ import java.util.Iterator;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * The type Spell.
+ */
 public abstract class Spell extends Card{
+    /**
+     * The Duration.
+     */
     protected double duration = 2;
+    /**
+     * The Radius.
+     */
     protected double radius;
+
+    /**
+     * Instantiates a new Spell.
+     *
+     * @param radius the radius
+     * @param cost   the cost
+     * @param path   the path
+     * @param damage the damage
+     * @param hp     the hp
+     */
     public Spell(double radius, int cost,
                  String path, int damage, int hp){
         super(cost, path, damage, hp);
@@ -18,27 +39,28 @@ public abstract class Spell extends Card{
     }
 
     @Override
-    public void startFunctioning(){
+    public void startFunctioning(Pane pane){
+        locatedOnPane = pane;
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                duration--;
-                if (duration == 0){
-                    if (TrainingCampController.playerInGameCards.contains(this))
-                        TrainingCampController.playerInGameCards.remove(this);
-                    else if (TrainingCampController.enemyInGameCards.contains(this))
-                        TrainingCampController.enemyInGameCards.remove(this);
-                    imageView.setVisible(false);
-                    imageView.setDisable(true);
-                    damage = 0;
-                    timer.cancel();
-                }
+                Platform.runLater(()->{
+                    duration--;
+                    if (duration == 0) {
+                        removeSpell();
+                        timer.cancel();
+                    }
+                } );
             }
         };
         timer.scheduleAtFixedRate(timerTask, 0, 1000);
         hit();
     }
+
+    /**
+     * Hit.
+     */
     public void hit(){
         if (TrainingCampController.playerInGameCards.contains(this))
             handlePlayerHit();
@@ -51,8 +73,11 @@ public abstract class Spell extends Card{
             while (it.hasNext()){
                 Card card = it.next();
                 if (checkX(card) && checkY(card)){
-                    card.setHp(card.getHp() - (this.damage / 2));
+                    card.setHp(card.getHp() - (this.damage));
                     checkHp(card);
+                    if (card.getHp() <= 0)
+                        it.remove();
+                    card = null;
                 }
             }
         }
@@ -62,8 +87,10 @@ public abstract class Spell extends Card{
             while (it.hasNext()){
                 Tower tower = it.next();
                 if (checkX(tower) && checkY(tower)){
-                    tower.setHp(tower.getHp() - (this.damage / 2));
+                    tower.setHp(tower.getHp() - (this.damage));
                     checkHp(tower);
+                    if (tower.getHp() <= 0)
+                        it.remove();
                 }
             }
         }
@@ -74,8 +101,13 @@ public abstract class Spell extends Card{
             while (it.hasNext()){
                 Card card = it.next();
                 if (checkX(card) && checkY(card)){
-                    card.setHp(card.getHp() - (this.damage / 2));
+                    card.setHp(card.getHp() - (this.damage));
                     checkHp(card);
+                    if (card.getHp() <= 0){
+                        it.remove();
+                        card = null;
+                    }
+
                 }
             }
         }
@@ -85,43 +117,74 @@ public abstract class Spell extends Card{
             while (it.hasNext()){
                 Tower tower = it.next();
                 if (checkX(tower) && checkY(tower)){
-                    tower.setHp(tower.getHp() - (this.damage / 2));
+                    tower.setHp(tower.getHp() - (this.damage));
                     checkHp(tower);
+                    if (tower.getHp() <= 0)
+                        it.remove();
                 }
             }
         }
     }
+
+    /**
+     * Check x boolean.
+     *
+     * @param gameElement the game element
+     * @return the boolean
+     */
     public boolean checkX(GameElement gameElement){
         return this.getX() + (15 * radius) > gameElement.getX() &&
                 this.getX() - (15 * radius) < gameElement.getX();
     }
+
+    /**
+     * Check y boolean.
+     *
+     * @param gameElement the game element
+     * @return the boolean
+     */
     public boolean checkY(GameElement gameElement){
         return this.getY() + (15 * radius) > gameElement.getY() &&
                 this.getY() - (15 * radius) < gameElement.getY();
     }
+
+    /**
+     * Check hp.
+     *
+     * @param card the card
+     */
     public void checkHp(Card card){
         if (card.getHp() <= 0){
-            card.setHp(0);
-            card.setDamage(0);
-            card.getImageView().setVisible(false);
-            card.getImageView().setDisable(true);
-            if (TrainingCampController.enemyInGameCards.contains(card))
-                TrainingCampController.enemyInGameCards.remove(card);
-            else if (TrainingCampController.playerInGameCards.contains(card))
-                TrainingCampController.playerInGameCards.remove(card);
-            card = null;
+            card.removeCard();
         }
     }
+
+    /**
+     * Remove spell.
+     */
+    public void removeSpell(){
+        if (TrainingCampController.playerInGameCards.contains(this))
+            TrainingCampController.playerInGameCards.remove(this);
+        else if (TrainingCampController.enemyInGameCards.contains(this))
+            TrainingCampController.enemyInGameCards.remove(this);
+        setDamage(0);
+        if (locatedOnPane.getChildren().contains(this.imageView))
+            locatedOnPane.getChildren().remove(this.imageView);
+
+        setX(0);
+        setY(0);
+    }
+
+    /**
+     * Check hp.
+     *
+     * @param tower the tower
+     */
     public void checkHp(Tower tower){
         if (tower.getHp() <= 0){
             tower.setHp(0);
             tower.setDamage(0);
-            tower.getImageView().setVisible(false);
-            tower.getImageView().setDisable(true);
-            if (TrainingCampController.enemyTowers.contains(tower))
-                TrainingCampController.enemyTowers.remove(tower);
-            else if (TrainingCampController.playerTowers.contains(tower))
-                TrainingCampController.playerTowers.remove(tower);
+            tower.removeTower();
         }
     }
 

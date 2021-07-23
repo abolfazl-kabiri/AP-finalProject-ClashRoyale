@@ -1,12 +1,22 @@
 package cards;
 
 import controller.TrainingCampController;
+import javafx.application.Platform;
+import javafx.scene.layout.Pane;
 
 import java.util.Iterator;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * The type Rage.
+ */
 public class Rage extends Spell{
+    /**
+     * Instantiates a new Rage.
+     *
+     * @param duration the duration
+     */
     public Rage(double duration){
         super(5, 3,
                 ".\\photos\\cardsImage\\rage_00000.png", 0, 1);
@@ -14,35 +24,40 @@ public class Rage extends Spell{
     }
 
     @Override
-    public void startFunctioning(){
+    public void startFunctioning(Pane pane){
+        locatedOnPane = pane;
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                duration -= 0.5;
-                if (duration < 0.5){
-                    if (TrainingCampController.playerInGameCards.contains(this))
-                        TrainingCampController.playerInGameCards.remove(this);
-                    else if (TrainingCampController.enemyInGameCards.contains(this))
-                        TrainingCampController.enemyInGameCards.remove(this);
-                    imageView.setVisible(false);
-                    imageView.setDisable(true);
-                    damage = 0;
-                    hp = 0;
-                    cancelDamage();
-                    timer.cancel();
-                }
+                Platform.runLater(()->{
+                    duration -= 0.5;
+                    if (duration < 0.5){
+                        removeSpell();
+                        cancelDamage();
+                        timer.cancel();
+                    }
+                });
+
             }
         };
         timer.scheduleAtFixedRate(timerTask, 0 , 500);
         rage();
     }
+
+    /**
+     * Rage.
+     */
     public void rage(){
         if (TrainingCampController.playerInGameCards.contains(this))
             handlePlayerRage();
         else if (TrainingCampController.enemyInGameCards.contains(this))
             handleBotRage();
     }
+
+    /**
+     * Handle player rage.
+     */
     public void handlePlayerRage(){
         synchronized (TrainingCampController.playerInGameCards){
             Iterator<Card> it = TrainingCampController.playerInGameCards.iterator();
@@ -56,6 +71,10 @@ public class Rage extends Spell{
             }
         }
     }
+
+    /**
+     * Handle bot rage.
+     */
     public void handleBotRage(){
         synchronized (TrainingCampController.enemyInGameCards){
             Iterator<Card> it = TrainingCampController.enemyInGameCards.iterator();
@@ -67,12 +86,20 @@ public class Rage extends Spell{
             }
         }
     }
+
+    /**
+     * Cancel damage.
+     */
     public void cancelDamage(){
         if (TrainingCampController.playerInGameCards.contains(this))
             cancelPlayerRage();
         else if (TrainingCampController.enemyInGameCards.contains(this))
             cancelBotRage();
     }
+
+    /**
+     * Cancel bot rage.
+     */
     public void cancelBotRage(){
         synchronized (TrainingCampController.enemyInGameCards){
             Iterator<Card> it = TrainingCampController.enemyInGameCards.iterator();
@@ -84,6 +111,10 @@ public class Rage extends Spell{
             }
         }
     }
+
+    /**
+     * Cancel player rage.
+     */
     public void cancelPlayerRage(){
         synchronized (TrainingCampController.playerInGameCards){
             Iterator<Card> it = TrainingCampController.playerInGameCards.iterator();
