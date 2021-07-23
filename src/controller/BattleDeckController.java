@@ -20,8 +20,15 @@ import sample.User;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 
+/**
+ * The type Battle deck controller.
+ */
 public class BattleDeckController {
     private String emptyCardImage = ".\\photos\\batlle deck photos\\empty card_00000.png";
     private User currentUser;
@@ -33,7 +40,7 @@ public class BattleDeckController {
     private HashMap<String, ImageView> emptyCardsImages;
     private Stage stage;
     private Parent root;
- //   private MediaPlayer player;
+    private MediaPlayer player;
     @FXML private Button backButton;
     @FXML private Button backButtonHighlighted;
     @FXML private Button emptyCard1;
@@ -76,9 +83,10 @@ public class BattleDeckController {
     @FXML private ImageView ragePhoto;
     @FXML private ImageView cannonPhoto;
     @FXML private ImageView infernoPhoto;
-//    private AudioInputStream audioInputStream;
-//    private Clip clip;
 
+    /**
+     * Initialize.
+     */
     public void initialize(){
         emptyCards = new ArrayList<>();
         selectedCardsImages = new HashMap<>();
@@ -105,6 +113,12 @@ public class BattleDeckController {
             b.setOpacity(0.5);
         }
     }
+
+    /**
+     * Select archer.
+     *
+     * @param event the event
+     */
     @FXML public void selectArcher(ActionEvent event){
 
         Button temp = findFirstDisableEmptyCard();
@@ -113,6 +127,12 @@ public class BattleDeckController {
             moveImageViewToIntendedEmptyCard(archerPhoto, card, archerCard, temp);
         }
     }
+
+    /**
+     * Select dragon.
+     *
+     * @param event the event
+     */
     @FXML public void selectDragon(ActionEvent event){
 
         Button temp = findFirstDisableEmptyCard();
@@ -121,6 +141,12 @@ public class BattleDeckController {
             moveImageViewToIntendedEmptyCard(dragonPhoto, card, dragonCard, temp);
         }
     }
+
+    /**
+     * Select barbarian.
+     *
+     * @param event the event
+     */
     @FXML public void selectBarbarian(ActionEvent event){
 
         Button temp = findFirstDisableEmptyCard();
@@ -129,6 +155,12 @@ public class BattleDeckController {
             moveImageViewToIntendedEmptyCard(barbarianPhoto, card, barbarianCard, temp);
         }
     }
+
+    /**
+     * Select giant.
+     *
+     * @param event the event
+     */
     @FXML public void selectGiant(ActionEvent event){
 
         Button temp = findFirstDisableEmptyCard();
@@ -137,6 +169,12 @@ public class BattleDeckController {
             moveImageViewToIntendedEmptyCard(giantPhoto, card, giantCard, temp);
         }
     }
+
+    /**
+     * Select pekka.
+     *
+     * @param event the event
+     */
     @FXML public void selectPekka(ActionEvent event){
 
         Button temp = findFirstDisableEmptyCard();
@@ -145,6 +183,12 @@ public class BattleDeckController {
             moveImageViewToIntendedEmptyCard(pekkaPhoto, card, pekkaCard, temp);
         }
     }
+
+    /**
+     * Select valkyrie.
+     *
+     * @param event the event
+     */
     @FXML public void selectValkyrie(ActionEvent event){
 
         Button temp = findFirstDisableEmptyCard();
@@ -153,6 +197,12 @@ public class BattleDeckController {
             moveImageViewToIntendedEmptyCard(valkyriePhoto, card, valkyrieCard, temp);
         }
     }
+
+    /**
+     * Select wizard.
+     *
+     * @param event the event
+     */
     @FXML public void selectWizard(ActionEvent event){
 
         Button temp = findFirstDisableEmptyCard();
@@ -161,6 +211,12 @@ public class BattleDeckController {
             moveImageViewToIntendedEmptyCard(wizardPhoto, card, wizardCard, temp);
         }
     }
+
+    /**
+     * Select arrows.
+     *
+     * @param event the event
+     */
     @FXML public void selectArrows(ActionEvent event){
 
         Button temp = findFirstDisableEmptyCard();
@@ -169,6 +225,12 @@ public class BattleDeckController {
             moveImageViewToIntendedEmptyCard(arrowsPhoto, card, arrowsCard, temp);
         }
     }
+
+    /**
+     * Select fire ball.
+     *
+     * @param event the event
+     */
     @FXML public void selectFireBall(ActionEvent event){
 
         Button temp = findFirstDisableEmptyCard();
@@ -177,6 +239,12 @@ public class BattleDeckController {
             moveImageViewToIntendedEmptyCard(fireBallPhoto, card, fireBallCard, temp);
         }
     }
+
+    /**
+     * Select rage.
+     *
+     * @param event the event
+     */
     @FXML public void selectRage(ActionEvent event){
 
         Button temp = findFirstDisableEmptyCard();
@@ -185,6 +253,12 @@ public class BattleDeckController {
             moveImageViewToIntendedEmptyCard(ragePhoto, card, rageCard, temp);
         }
     }
+
+    /**
+     * Select cannon.
+     *
+     * @param event the event
+     */
     @FXML public void selectCannon(ActionEvent event){
 
         Button temp = findFirstDisableEmptyCard();
@@ -193,6 +267,12 @@ public class BattleDeckController {
             moveImageViewToIntendedEmptyCard(cannonPhoto, card, cannonCard, temp);
         }
     }
+
+    /**
+     * Select inferno.
+     *
+     * @param event the event
+     */
     @FXML public void selectInferno(ActionEvent event){
 
         Button temp = findFirstDisableEmptyCard();
@@ -213,62 +293,116 @@ public class BattleDeckController {
         button.setDisable(true);
         button.setOpacity(0.5);
 
-//        try {
-//            audioInputStream = AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\select.wav"));
-//            clip = AudioSystem.getClip();
-//            clip.open(audioInputStream);
-//            clip.start();
-//        } catch (LineUnavailableException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (UnsupportedAudioFileException e) {
-//            e.printStackTrace();
-//        }
-
-
-//        Media media = new Media(getClass().getResource("/sound effects and musics/select.mp3").toString());
-//        player = new MediaPlayer(media);
-//        player.setVolume(0.8);
-//        player.play();
+        Media media = new Media(getClass().getResource("/sound effects and musics/select.mp3").toString());
+        player = new MediaPlayer(media);
+        player.setVolume(0.8);
+        player.play();
     }
+
+    /**
+     * Unselect card 1.
+     *
+     * @param event the event
+     */
     @FXML public void unselectCard1(ActionEvent event){
         String id = selectedCardsImages.get(emptyCard1).getId();
         unselectViaEmptyCard(emptyCard1, emptyCard1Photo, id);
     }
+
+    /**
+     * Unselect card 2.
+     *
+     * @param event the event
+     */
     @FXML public void unselectCard2(ActionEvent event){
         String id = selectedCardsImages.get(emptyCard2).getId();
         unselectViaEmptyCard(emptyCard2, emptyCard2Photo, id);
     }
+
+    /**
+     * Unselect card 3.
+     *
+     * @param event the event
+     */
     @FXML public void unselectCard3(ActionEvent event){
         String id = selectedCardsImages.get(emptyCard3).getId();
         unselectViaEmptyCard(emptyCard3, emptyCard3Photo, id);
     }
+
+    /**
+     * Unselect card 4.
+     *
+     * @param event the event
+     */
     @FXML public void unselectCard4(ActionEvent event){
         String id = selectedCardsImages.get(emptyCard4).getId();
         unselectViaEmptyCard(emptyCard4, emptyCard4Photo, id);
     }
+
+    /**
+     * Unselect card 5.
+     *
+     * @param event the event
+     */
     @FXML public void unselectCard5(ActionEvent event){
         String id = selectedCardsImages.get(emptyCard5).getId();
         unselectViaEmptyCard(emptyCard5, emptyCard5Photo, id);
     }
+
+    /**
+     * Unselect card 6.
+     *
+     * @param event the event
+     */
     @FXML public void unselectCard6(ActionEvent event){
         String id = selectedCardsImages.get(emptyCard6).getId();
         unselectViaEmptyCard(emptyCard6, emptyCard6Photo, id);
     }
+
+    /**
+     * Unselect card 7.
+     *
+     * @param event the event
+     */
     @FXML public void unselectCard7(ActionEvent event){
         String id = selectedCardsImages.get(emptyCard7).getId();
         unselectViaEmptyCard(emptyCard7, emptyCard7Photo, id);
     }
+
+    /**
+     * Unselect card 8.
+     *
+     * @param event the event
+     */
     @FXML public void unselectCard8(ActionEvent event){
         String id = selectedCardsImages.get(emptyCard8).getId();
         unselectViaEmptyCard(emptyCard8, emptyCard8Photo, id);
     }
-    @FXML public void backToMenu(ActionEvent event) {
 
+    /**
+     * Back to menu.
+     *
+     * @param event the event
+     */
+    @FXML public void backToMenu(ActionEvent event) {
         try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/GAMEDATABASE",
+                    "root", "m@96@s97");
+            Statement statement = connection.createStatement();
             currentUser.setDeck(selectedCards);
             currentUser.saveUser();
+            String delete = "delete from cards where username = '"+currentUser.getUsername()+"'";
+            boolean result1 = statement.execute(delete);
+            String insert = "insert into cards VALUES ('"+currentUser.getUsername()+"'," +
+                    "'"+cardsNameGenerator(selectedCards.size() >= 1 ? selectedCards.get(0) : null)+"'," +
+                    "'"+cardsNameGenerator(selectedCards.size() >= 2 ? selectedCards.get(1) : null)+"'," +
+                    "'"+cardsNameGenerator(selectedCards.size() >= 3 ? selectedCards.get(2) : null)+"'," +
+                    "'"+cardsNameGenerator(selectedCards.size() >= 4 ? selectedCards.get(3) : null)+"'," +
+                    "'"+cardsNameGenerator(selectedCards.size() >= 5 ? selectedCards.get(4) : null)+"'," +
+                    "'"+cardsNameGenerator(selectedCards.size() >= 6 ? selectedCards.get(5) : null)+"'," +
+                    "'"+cardsNameGenerator(selectedCards.size() >= 7 ? selectedCards.get(6) : null)+"'," +
+                    "'"+cardsNameGenerator(selectedCards.size() == 8 ? selectedCards.get(7) : null)+"')";
+            boolean result = statement.execute(insert);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/MainMenu.fxml"));
             stage = (Stage) backButton.getScene().getWindow();
             root = loader.load();
@@ -278,16 +412,28 @@ public class BattleDeckController {
             stage.setScene(scene);
             stage.setTitle("main menu");
             stage.show();
-        } catch (IOException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Highlight back.
+     *
+     * @param event the event
+     */
     @FXML public void highlightBack(MouseEvent event){
         backButton.setVisible(false);
         backButton.setDisable(true);
         backButtonHighlighted.setVisible(true);
         backButtonHighlighted.setDisable(false);
     }
+
+    /**
+     * Un highlighted back.
+     *
+     * @param event the event
+     */
     @FXML public void unHighlightedBack(MouseEvent event){
         backButton.setVisible(true);
         backButton.setDisable(false);
@@ -428,26 +574,10 @@ public class BattleDeckController {
                 }
             }
         }
-
-
-//        try {
-//            audioInputStream = AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\unselect.wav"));
-//            clip = AudioSystem.getClip();
-//            clip.open(audioInputStream);
-//            clip.start();
-//        } catch (LineUnavailableException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (UnsupportedAudioFileException e) {
-//            e.printStackTrace();
-//        }
-
-
-//        Media media =new Media(getClass().getResource("/sound effects and musics/unselect.mp3").toString());
-//        player = new MediaPlayer(media);
-//        player.setVolume(0.8);
-//        player.play();
+        Media media =new Media(getClass().getResource("/sound effects and musics/unselect.mp3").toString());
+        player = new MediaPlayer(media);
+        player.setVolume(0.8);
+        player.play();
     }
     private void unselectIntendedCard(ImageView imageView, Button intendedCard,
                                       Button intendedEmptyCard,
@@ -471,12 +601,22 @@ public class BattleDeckController {
         }
         return temp;
     }
+
+    /**
+     * Sets current user.
+     *
+     * @param user the user
+     */
     public void setCurrentUser(User user) {
         this.currentUser = user;
         userCards = user.getDeck();
         selectedCards = userCards;
         loadSelectedCards();
     }
+
+    /**
+     * Load selected cards.
+     */
     public void loadSelectedCards(){
         if (selectedCards.size() != 0){
             for (int i = 0; i < selectedCards.size(); i++) {
@@ -559,5 +699,32 @@ public class BattleDeckController {
         temp.setImage(selectedCardPhoto.getImage());
         selectedCardsImages.put(intendedEmptyCard, selectedCardPhoto);
         selectedCardsObjects.put(intendedEmptyCard, card);
+    }
+    private String cardsNameGenerator(Card card){
+        if (card instanceof Archer)
+            return "archer";
+        else if(card instanceof Arrows)
+            return "arrows";
+        else if (card instanceof BabyDragon)
+            return "baby dragon";
+        else if (card instanceof Barbarian)
+            return "barbarian";
+        else if (card instanceof Cannon)
+            return "cannon";
+        else if (card instanceof FireBall)
+            return "fireball";
+        else if (card instanceof Giant)
+            return "giant";
+        else if (card instanceof InfernoTower)
+            return "inferno tower";
+        else if (card instanceof MiniPekka)
+            return "mini pekka";
+        else if (card instanceof Rage)
+            return "rage";
+        else if (card instanceof Valkyrie)
+            return "valkyrie";
+        else if (card instanceof Wizard)
+            return "wizard";
+        return "";
     }
 }

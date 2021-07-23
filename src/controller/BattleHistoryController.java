@@ -19,6 +19,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * The type Battle history controller.
+ */
 public class BattleHistoryController implements Initializable {
     private User currentUser;
     private ArrayList<String> battles;
@@ -28,18 +31,35 @@ public class BattleHistoryController implements Initializable {
     @FXML private ListView<String> listView;
     @FXML private Button backButtonHighlighted;
 
+    /**
+     * Highlight back.
+     *
+     * @param event the event
+     */
     @FXML public void highlightBack(MouseEvent event){
         backButton.setVisible(false);
         backButton.setDisable(true);
         backButtonHighlighted.setVisible(true);
         backButtonHighlighted.setDisable(false);
     }
+
+    /**
+     * Un highlighted back.
+     *
+     * @param event the event
+     */
     @FXML public void unHighlightedBack(MouseEvent event){
         backButton.setVisible(true);
         backButton.setDisable(false);
         backButtonHighlighted.setVisible(false);
         backButtonHighlighted.setDisable(true);
     }
+
+    /**
+     * Back to menu.
+     *
+     * @param event the event
+     */
     @FXML void backToMenu(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/MainMenu.fxml"));
@@ -55,10 +75,17 @@ public class BattleHistoryController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Sets current user.
+     *
+     * @param user the user
+     */
     public void setCurrentUser(User user) {
         this.currentUser = user;
         battles = currentUser.getBattleHistory();
-        listView.getItems().addAll(battles);
+        for (int i = battles.size() - 1; i>=0; i--)
+            listView.getItems().add(battles.get(i));
 
     }
     @Override

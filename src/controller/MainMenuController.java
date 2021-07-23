@@ -10,8 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -22,7 +24,13 @@ import sample.User;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Timer;
+import java.util.TimerTask;
 
+/**
+ * The type Main menu controller.
+ */
 public class MainMenuController {
     private String soundIn;
     private String soundOut;
@@ -31,7 +39,7 @@ public class MainMenuController {
     private Clip clip;
     private Stage stage;
     private Parent root;
-   // private MediaPlayer player;
+    private MediaPlayer player;
     @FXML private Button profileButton;
     @FXML private ImageView profPhoto;
     @FXML private ImageView profPhotoLowOpacity;
@@ -56,30 +64,20 @@ public class MainMenuController {
     @FXML private ImageView twoPhoto;
     @FXML private ImageView twoPhotoLowOpacity;
     @FXML private ImageView twoTag;
+    @FXML private Button logOutButton;
+    @FXML private ImageView logOutPhoto;
+    @FXML private ImageView logOutTag;
+    @FXML private Pane errorPane;
+
+    /**
+     * Initialize.
+     */
     public void initialize(){
-//        Media media = new Media(getClass().getResource("/sound effects and musics/menuMusic.mp3").toString());
-//        player = new MediaPlayer(media);
-//        player.setVolume(0.2);
-//        player.setCycleCount(Timeline.INDEFINITE);
-//        player.play();
-
-
-
-//        try {
-//            audioInputStream = AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\menuMusic.wav"));
-//            clip = AudioSystem.getClip();
-//            clip.open(audioInputStream);
-//            clip.start();
-//        } catch (LineUnavailableException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (UnsupportedAudioFileException e) {
-//            e.printStackTrace();
-//        }
-
-
-
+        Media media = new Media(getClass().getResource("/sound effects and musics/new_menu_01.mp3").toString());
+        player = new MediaPlayer(media);
+        player.setVolume(0.2);
+        player.setCycleCount(Timeline.INDEFINITE);
+        player.play();
 
         profPhotoLowOpacity.setOpacity(0);
         deckPhotoLowOpacity.setOpacity(0);
@@ -162,6 +160,46 @@ public class MainMenuController {
                 0.8, 0,
                 5, 5, -3);
     }
+
+    /**
+     * Resize log out photo.
+     *
+     * @param event the event
+     */
+    public void resizeLogOutPhoto(MouseEvent event){
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(new File(soundIn));
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+            e.printStackTrace();
+        }
+        logOutPhoto.setImage(new Image(".\\photos\\main menu images\\logout highlighted_00000.png"));
+    }
+
+    /**
+     * Shrink log out photo.
+     *
+     * @param event the event
+     */
+    public void shrinkLogOutPhoto(MouseEvent event){
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(new File(soundOut));
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+            e.printStackTrace();
+        }
+        logOutPhoto.setImage(new Image(".\\photos\\main menu images\\logout_00000.png"));
+    }
+
+    /**
+     * Show profile.
+     *
+     * @param event the event
+     */
     @FXML public void showProfile(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Profile.fxml"));
@@ -176,7 +214,14 @@ public class MainMenuController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        player.stop();
     }
+
+    /**
+     * Show battle deck.
+     *
+     * @param event the event
+     */
     @FXML public void showBattleDeck(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/BattleDeck.fxml"));
@@ -191,7 +236,14 @@ public class MainMenuController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        player.stop();
     }
+
+    /**
+     * Show battle history.
+     *
+     * @param event the event
+     */
     @FXML public void showBattleHistory(ActionEvent event){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/BattleHistory.fxml"));
@@ -206,23 +258,81 @@ public class MainMenuController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        player.stop();
     }
+
+    /**
+     * Show training camp.
+     *
+     * @param event the event
+     */
     @FXML public void showTrainingCamp(ActionEvent event){
+        if(currentUser.getDeck().size() == 8) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/ChooseBot.fxml"));
+                stage = (Stage) trainingCampButton.getScene().getWindow();
+                root = loader.load();
+                ChooseBotController botCon = loader.getController();
+                botCon.setCurrentUser(currentUser);
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setTitle("choose bot");
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            player.stop();
+        }
+        else{
+            profileButton.setDisable(true);
+            trainingCampButton.setDisable(true);
+            battleDeckButton.setDisable(true);
+            battleHistoryButton.setDisable(true);
+            oneVOneButton.setDisable(true);
+            twoVTwoButton.setDisable(true);
+            FadeTransition ft = new FadeTransition(Duration.seconds(.4), errorPane);
+            ft.setFromValue(0);
+            ft.setToValue(1);
+            ft.play();
+            Timer timer = new Timer();
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    ft.setFromValue(1);
+                    ft.setToValue(0);
+                    ft.play();
+                    profileButton.setDisable(false);
+                    trainingCampButton.setDisable(false);
+                    battleDeckButton.setDisable(false);
+                    battleHistoryButton.setDisable(false);
+                    oneVOneButton.setDisable(false);
+                    twoVTwoButton.setDisable(false);
+                }
+            };
+            timer.schedule(task, 2000);
+        }
+    }
+
+    /**
+     * Show socket based sections.
+     *
+     * @param event the event
+     */
+    @FXML public void showSocketBasedSections(ActionEvent event){
         try {
-            Player player = new Player(currentUser.getDeck(), currentUser.getLevel());
-            currentUser.setPlayer(player);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/TrainingCamp.fxml"));
-            stage = (Stage) trainingCampButton.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/emptyWindows.fxml"));
+            stage = (Stage) battleHistoryButton.getScene().getWindow();
             root = loader.load();
-            TrainingCampController trainCon = loader.getController();
-            trainCon.setCurrentUser(currentUser);
+            SocketBasedSectionsController socketCon = loader.getController();
+            socketCon.setCurrentUser(currentUser);
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle("training camp");
+            stage.setTitle("1v1 / 2v2");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        player.stop();
     }
     private void changeIntendedPhotoSize(String soundEffectPath,
                                          ImageView lowOpacityPhoto, ImageView photo, ImageView tag,
@@ -249,6 +359,32 @@ public class MainMenuController {
         tag.setFitWidth(tag.getFitHeight() + sizeIncrement);
         tag.setFitHeight(tag.getFitHeight() + sizeIncrement);
     }
+
+    /**
+     * Log out.
+     *
+     * @param event the event
+     */
+    public void logOut(ActionEvent event){
+        clip.stop();
+        player.stop();
+        try {
+            stage = (Stage) logOutButton.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../view/Login.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Login");
+            stage.show();
+        } catch (IOException io){
+            io.printStackTrace();
+        }
+    }
+
+    /**
+     * Sets current user.
+     *
+     * @param user the user
+     */
     public void setCurrentUser(User user) {
         this.currentUser = user;
     }

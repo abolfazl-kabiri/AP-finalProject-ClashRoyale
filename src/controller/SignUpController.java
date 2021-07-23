@@ -18,8 +18,13 @@ import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+/**
+ * The type Sign up controller.
+ */
 public class SignUpController implements Initializable {
     @FXML private TextField usernameTextField;
     @FXML private TextField visiblePassword;
@@ -34,10 +39,7 @@ public class SignUpController implements Initializable {
     @FXML private Button hideRepeatPasswordButton;
     @FXML private Hyperlink loginLink;
     @FXML private Label wrongPassword;
-//    private MediaPlayer player;
-//
-//    private AudioInputStream audioInputStream;
-//    private Clip clip;
+    private MediaPlayer player;
 
     private Stage stage;
     private Parent root;
@@ -45,23 +47,12 @@ public class SignUpController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-//        Media media = new Media(getClass().getResource("/sound effects and musics/LoginMusic.wav").toString());
-//        player = new MediaPlayer(media);
-//        player.setVolume(0.5);
-//        player.setCycleCount(Timeline.INDEFINITE);
-//        player.play();
-//        try {
-//            audioInputStream = AudioSystem.getAudioInputStream(new File(".\\src\\sound effects and musics\\LoginMusic.wav"));
-//            clip = AudioSystem.getClip();
-//            clip.open(audioInputStream);
-//            clip.start();
-//        } catch (LineUnavailableException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (UnsupportedAudioFileException e) {
-//            e.printStackTrace();
-//        }
+        Media media = new Media(getClass().getResource("/sound effects and musics/LoginMusic.wav").toString());
+        player = new MediaPlayer(media);
+        player.setVolume(0.5);
+        player.setCycleCount(Timeline.INDEFINITE);
+        player.play();
+
         visiblePassword.setVisible(false);
         visiblePassword.setDisable(true);
         hidePasswordButton.setDisable(true);
@@ -74,9 +65,14 @@ public class SignUpController implements Initializable {
         signUpHighlightedButton.setDisable(true);
 
     }
+
+    /**
+     * Link to login.
+     *
+     * @param event the event
+     */
     @FXML public void linkToLogin(ActionEvent event) {
-//        player.stop();
-//        clip.stop();
+        player.stop();
 
         try {
             stage = (Stage) loginLink.getScene().getWindow();
@@ -89,9 +85,15 @@ public class SignUpController implements Initializable {
             io.printStackTrace();
         }
     }
+
+    /**
+     * Sign up.
+     *
+     * @param event the event
+     */
     @FXML public void signUp(ActionEvent event) {
         String username = usernameTextField.getText();
-        if(username == "" || passwordField.getText() == "" || repeatPassField.getText() == ""){
+        /*if(username == "" || passwordField.getText() == "" || repeatPassField.getText() == ""){
             wrongPassword.setText("fill all fields");
         } else {
             File file = new File(".\\src\\users\\" + username + ".bin");
@@ -102,12 +104,52 @@ public class SignUpController implements Initializable {
                 String repeatedPassword = repeatPassField.getText();
                 if(password.equals(repeatedPassword)){
                     User user = new User(username,password);
-                    //        player.stop();
-                    //           clip.stop();
+                    player.stop();
                     loadMainMenu(user);
                 } else {
                     wrongPassword.setText("different passwords");
                 }
+            }
+        }*/
+        if(username == "" || passwordField.getText() == "" || repeatPassField.getText() == ""){
+            wrongPassword.setText("fill all fields");
+        }
+        else{
+            try {
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/GAMEDATABASE",
+                        "root", "m@96@s97");
+                Statement statement = connection.createStatement();
+                String command = "select * from users";
+                ResultSet resultSet = statement.executeQuery(command);
+                int counter = 0;
+                while (resultSet.next()){
+                    if (resultSet.getString(1).equals(username))
+                        counter++;
+                }
+                if (counter != 0)
+                    wrongPassword.setText("this username is already taken");
+                else{
+                    String password = passwordField.getText();
+                    String repeatedPassword = repeatPassField.getText();
+                    if (password.length() < 4)
+                        wrongPassword.setText("your password must be at least 4 character");
+                    else if(password.equals(repeatedPassword)){
+                        String date = "";
+                        int level = 1;
+                        int xp = 0;
+                        String selection = "insert into users(username, password, battleHistory, level, xp) VALUES" +
+                                "('"+username+"', '"+password+"', '"+date+"', '"+level+"', '"+xp+"')";
+                        boolean result = statement.execute(selection);
+                        User user = new User(username,password);
+                        player.stop();
+                        loadMainMenu(user);
+                    } else if (!password.equals(repeatedPassword)){
+                        wrongPassword.setText("different passwords");
+                    }
+                }
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
             }
         }
     }
@@ -126,6 +168,12 @@ public class SignUpController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Show password.
+     *
+     * @param event the event
+     */
     @FXML public void showPassword(ActionEvent event){
         showPasswordButton.setVisible(false);
         showPasswordButton.setDisable(true);
@@ -137,6 +185,12 @@ public class SignUpController implements Initializable {
         passwordField.setDisable(true);
         passwordField.setVisible(false);
     }
+
+    /**
+     * Hide password.
+     *
+     * @param event the event
+     */
     @FXML public void hidePassword(ActionEvent event){
         showPasswordButton.setVisible(true);
         showPasswordButton.setDisable(false);
@@ -148,6 +202,12 @@ public class SignUpController implements Initializable {
         passwordField.setDisable(false);
         passwordField.setVisible(true);
     }
+
+    /**
+     * Show repeat password.
+     *
+     * @param event the event
+     */
     @FXML public void showRepeatPassword(ActionEvent event){
         showRepeatPasswordButton.setDisable(true);
         showRepeatPasswordButton.setVisible(false);
@@ -159,6 +219,12 @@ public class SignUpController implements Initializable {
         repeatPassField.setVisible(false);
         repeatPassField.setDisable(true);
     }
+
+    /**
+     * Hide repeat password.
+     *
+     * @param event the event
+     */
     @FXML public void hideRepeatPassword(ActionEvent event){
         showRepeatPasswordButton.setDisable(false);
         showRepeatPasswordButton.setVisible(true);
@@ -170,12 +236,24 @@ public class SignUpController implements Initializable {
         repeatPassField.setVisible(true);
         repeatPassField.setDisable(false);
     }
+
+    /**
+     * Highlight sign up.
+     *
+     * @param event the event
+     */
     @FXML public void highlightSignUp(MouseEvent event){
         signUpButton.setDisable(true);
         signUpButton.setVisible(false);
         signUpHighlightedButton.setVisible(true);
         signUpHighlightedButton.setDisable(false);
     }
+
+    /**
+     * Unhighlight sign up.
+     *
+     * @param event the event
+     */
     @FXML public void unhighlightSignUp(MouseEvent event){
         signUpButton.setDisable(false);
         signUpButton.setVisible(true);

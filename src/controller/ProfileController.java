@@ -14,11 +14,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import sample.DataBase;
+import sample.SmartBot;
 import sample.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * The type Profile controller.
+ */
 public class ProfileController {
     private User currentUser;
     private Stage stage;
@@ -38,6 +42,10 @@ public class ProfileController {
     @FXML private ImageView selectedCard6;
     @FXML private ImageView selectedCard7;
     @FXML private ImageView selectedCard8;
+
+    /**
+     * Initialize.
+     */
     public void initialize(){
         cardsPhotos = new ArrayList<>();
         cardsPhotos.add(selectedCard1);
@@ -49,18 +57,36 @@ public class ProfileController {
         cardsPhotos.add(selectedCard7);
         cardsPhotos.add(selectedCard8);
     }
+
+    /**
+     * Highlight back.
+     *
+     * @param event the event
+     */
     @FXML public void highlightBack(MouseEvent event){
         backButton.setVisible(false);
         backButton.setDisable(true);
         backButtonHighlighted.setVisible(true);
         backButtonHighlighted.setDisable(false);
     }
+
+    /**
+     * Un highlighted back.
+     *
+     * @param event the event
+     */
     @FXML public void unHighlightedBack(MouseEvent event){
         backButton.setVisible(true);
         backButton.setDisable(false);
         backButtonHighlighted.setVisible(false);
         backButtonHighlighted.setDisable(true);
     }
+
+    /**
+     * Back to menu.
+     *
+     * @param event the event
+     */
     @FXML void backToMenu(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/MainMenu.fxml"));
@@ -78,6 +104,11 @@ public class ProfileController {
     }
 
 
+    /**
+     * Sets current user.
+     *
+     * @param user the user
+     */
     public void setCurrentUser(User user) {
         this.currentUser = user;
         changeLabelText();
@@ -85,6 +116,9 @@ public class ProfileController {
         fillBar();
     }
 
+    /**
+     * Set selected cards.
+     */
     public void setSelectedCards(){
         if (currentUser.getDeck().size() != 0){
             for (int i = 0; i < currentUser.getDeck().size(); i++) {
