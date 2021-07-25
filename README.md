@@ -1,2 +1,2 @@
 # AP-finalProject
-please change branch to "new" to access to final version of code
+please change branch to "new" to have access to final version of code
